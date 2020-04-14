@@ -8,6 +8,7 @@ By EXTRAORDY - La formazione ufficiale Red Hat
 
 E' consigliato seguire le guide per l'installazione di CodeReady Containers per avere a disposizione un cluster Openshift minimale.
 
+- [Guida inscrizione gratuita a Red Hat Developer](guides/rhdev-subscribe/README.md)
 - [Guida installazione CodeReady Containers](guides/crc/README.md)
 
 Nel caso non fosse possibile installare il software necessario per qualunque motivo, non preoccuparti. 
