@@ -197,6 +197,10 @@ Potrebbe essere necessario autorizzare l'secuzione del programma **crc**, che se
 
 Per fare ciò, è sufficiente andare nelle impostazioni, nella sezione Sicurezza e Privacy, e cliccare su "Consenti" nel prompt che viene proposto in basso a destra.
 
+
+https://support.apple.com/it-ch/guide/mac-help/mh43185/mac
+
+
 Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc per installare la nostra VM:
 
     alessandro@MBPdiAlessandro crc-macos-1.8.0-amd64 % ./crc setup
