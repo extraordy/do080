@@ -1,3 +1,10 @@
+# CodeReady Containers - Un cluster all in one!
+
+CRC, CodeReady Containers, è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster Openshift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installaizone vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
+Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a disposizione un ambiente funzionante, disponibile e pronto all'installazione su qualsiasi sistema operativo supportato finora.
+
+Per maggiori informazioni o per la risoluzione dei problemi più comuni, il link di riferimento è:  
+https://cloud.redhat.com/openshift/install/crc/installer-provisioned
 
 ## Download link:
 
@@ -24,14 +31,19 @@ I requisiti di sistema, invece, sono i seguenti:
 - 8GB di memoria
 - 35GB di storage disponibili
 
+# Installazione
+
+In questa sezione andremo a coprire l'installazione della piattaforma in ambiente Linux, Windows e Mac.
 
 ## Installazione su Windows
 
-Una volta eseguito il download seguendo il link indicato, ci troveremo con un file compresso che andremo ad estrarre:
+Una volta eseguito il download seguendo il link indicato, ci troveremo con un file compresso che andremo ad estrarre:  
+![](images/win_download.png)
 
 Una volta decisa la location del download, all’interno troveremo la directory che comprende l'eseguibile **crc** che andremo ad utilizzare.
 
-Per andarlo ad eseguire, apriamo il prompt dei comandi:
+Per andarlo ad eseguire, apriamo il prompt dei comandi:  
+![](images/win_cmd.png)
 
 Spostiamoci nella directory dove abbiamo estratto il nostro file, nel mio caso nella directory "Downloads\crc-windows-amd64\crc-windows-1.8.0-amd64":
 
@@ -69,8 +81,8 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
 
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line
-
+Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
+![](images/pull-secret.png)
 
 ## Installazione su Linux
 
@@ -82,7 +94,8 @@ Di seguito una piccola tabella dove troverete i comandi da eseguire a seconda de
 | :------------ | :------------ |
 | Fedora  | sudo dnf install NetworkManager  |
 | Red Hat Enterprise Linux/CentOS  |  su -c 'yum install NetworkManager' |
-| Debian/Ubuntu  | sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager  |
+| Debian/Ubuntu  | sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager  |  
+
 L'installazione è veramente semplice, in quanto l'installer si presenta come un'unica entità che andremo ad eseguire e sfrutterà le risorse di sistema per poter funzionare.
 
 Una volta eseguito il download, ci ritroveremo con un file da estrarre, che andremo a scompattare:
@@ -142,7 +155,8 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
 
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.
+Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
+![](images/pull-secret.png)
 
 Il resto del processo è qualcosa di simile, alla fine viene generata una password per l'utente developer che dovrete salvare per poter accedere al vostro cluster!
 
@@ -225,7 +239,8 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
 
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.
+Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
+![](images/pull-secret.png)
 
 Il resto del processo è qualcosa di simile, alla fine viene generata una password per l'utente developer che dovrete salvare per poter accedere al vostro cluster!
 
@@ -249,7 +264,9 @@ Il resto del processo è qualcosa di simile, alla fine viene generata una passwo
     WARN The cluster might report a degraded or error state. This is expected since several operators have been disabled to lower the resource usage. For more information, please consult the documentation 
 
 
-## Accesso ad Openshift
+# Accesso ad Openshift
+
+## Console Web
 
 Al termine del setup, appuntatevi la password che viene generata, relativa all'utente "**kubeadmin**", che vi servirà per eseguire il login come amministratore. 
 In alternativa, potrete usare l'utente **developer**, con password **developer**, che corrisponde ad una utenza con privilegi limitati.
@@ -261,6 +278,16 @@ Per accedere tramite console web, sarà sufficiente utilizzare il comando.
 `crc console`
 
 Questo aprirà il browser puntando all'indirizzo generato per la console web di Openshift. Potrete accedere con l'utente '**developer**' e la password generata.
+
+E' importante, se utilizzate l'utente developer, selezionare il provider "htpasswd_provider" nella schermata che vi verrà proposta, dopo aver accettato i certificati.
+![](images/htpasswd.png)
+
+Una volta eseguito il login, questa sarà la schermata che vi comparirà, e siete pronti a lavorare!
+
+![](images/dashboard.png)
+
+
+## Command line
 
 In alternativa, potrete utilizzare l'utility '**oc**' per accedere ad Openshift da linea di comando.
 
