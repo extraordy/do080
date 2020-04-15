@@ -4,6 +4,8 @@ Il Deploying Containerized Applications Technical Overview (DO080) approccia il 
 
 By EXTRAORDY - La formazione ufficiale Red Hat
 
+- [Indice degli argomenti](guides/index/README.md)
+
 # Setup consigliato
 
 E' consigliato seguire le guide per l'installazione di CodeReady Containers per avere a disposizione un cluster Openshift minimale.
