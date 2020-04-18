@@ -128,4 +128,30 @@ Anche per questo tipo di esecuzione valgono le opzioni **-i** e **-t**, ed analo
 Vi chiederete se è un caso che l'hostname sia proprio uguale all'ID 'abbreviato' del nostro container; no! Non è un caso  :)
 
 
+## Arrestare un container e rimuoverlo
+Come abbiamo visto, possiamo eseguire in background i nostri container, ma potremmo aver bisogno di bloccarne l'esecuzione, o rimuovere container che non utilizziamo più.
+Per interrompere l'esecuzione di un container, possiamo utilizzare il comando '**podman stop**' specificando il nome o l'identificativo del container che desideriamo interrompere:
 
+[alex@pollos do080]$ podman stop 30fa500dc200
+30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f
+Possiamo verificare immediatamente che il nostro container non è più in esecuzione:
+[alex@pollos do080]$ podman ps
+CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS  PORTS  NAMES
+
+Tuttavia, utilizzando l'opzione '-a' 
+[alex@pollos do080]$ podman ps -a
+CONTAINER ID  IMAGE                           COMMAND           CREATED         STATUS                     PORTS                 NAMES
+1463d6cd2b6b  docker.io/library/httpd:latest  /bin/bash         13 minutes ago  Exited (0) 12 minutes ago                        serene_wescoff
+5c55979cfe57  docker.io/library/httpd:latest  hostname          17 minutes ago  Exited (0) 17 minutes ago                        nice_brattain
+30fa500dc200  docker.io/library/httpd:latest  httpd-foreground  24 minutes ago  Exited (0) 2 minutes ago   0.0.0.0:8080->80/tcp  peaceful_bardeen
+8b5c76fcbb8e  docker.io/library/httpd:latest  httpd-foreground  25 minutes ago  Created                    0.0.0.0:80->80/tcp    boring_nightingale
+[alex@pollos do080]$ podman images
+REPOSITORY                TAG      IMAGE ID       CREATED      SIZE
+docker.io/library/httpd   latest   bdc169d27d36   2 days ago   171 MB
+[alex@pollos do080]$ podman rm 30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f
+30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f
+[alex@pollos do080]$ podman ps -a
+CONTAINER ID  IMAGE                           COMMAND           CREATED         STATUS                     PORTS               NAMES
+1463d6cd2b6b  docker.io/library/httpd:latest  /bin/bash         14 minutes ago  Exited (0) 13 minutes ago                      serene_wescoff
+5c55979cfe57  docker.io/library/httpd:latest  hostname          18 minutes ago  Exited (0) 18 minutes ago                      nice_brattain
+8b5c76fcbb8e  docker.io/library/httpd:latest  httpd-foreground  25 minutes ago  Created                    0.0.0.0:80->80/tcp  boring_nightingale
