@@ -114,7 +114,7 @@ Possiamo facilmente testare la bontà dell'esecuzione, con una semplice **curl**
 
 ## Eseguire comandi all'interno di un container
 Abbiamo visto che, nel nostro container di esempio, l'immagine httpd al termine del caricamento eseguiva automaticamente il suo processo.
-In realtà, non tutte le immagini necessariamente 'eseguono' qualcosa al loro interno, e comunque qualsiasi sia il comando che viene eseguito, può essere sovrascritto da linea di comando.
+In realtà, non tutte le immagini necessariamente 'eseguono' qualcosa al loro interno, o comunque se il comando viene eseguito nella direttiva CMD, può essere sovrascritto da linea di comando.
 Tornando alla nostra immagine httpd, ora il container è in esecuzione in background, ma potremmo ad esempio lanciare una nuova istanza, che semplicemente ci stampi l'hostname del container in cui andrà ad essere eseguita la nostra immagine:
 
     [student@workstation do080]$ podman run httpd hostname
