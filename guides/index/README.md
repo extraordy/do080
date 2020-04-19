@@ -1,4 +1,3 @@
-
 # Cap.1 - Overview of Container Technology
 
 -   Overview della differenza tra container e VM
@@ -52,7 +51,7 @@
     
 -   Dimostrazione mysql container (exec -it)
     
--   Sarebbe carino aggiungere una piccola parentesi per come elencare le immagini già pullate e come stoppare/rimuovere un container (SI!)
+-   Aggiunta una piccola parentesi per come elencare le immagini già pullate e come stoppare/rimuovere un container
     
 
 # Cap.5 - Building Custom Container Images with Dockerfiles
