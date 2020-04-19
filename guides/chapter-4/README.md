@@ -1,4 +1,3 @@
-
 # Podman - Interagire con i container
 Podman è un tool, ormai di base nei sistemi RHEL/Fedora/Centos più recenti, che di fatto va a sostituire il ben più conosciuto Docker, al momento non più supportato.
 Tuttavia, per chi ha già avuto modo di interagire con Docker, si renderà quasi subito conto che i comandi che andremo ad utilizzare sono esattamente coerenti con quanto già utilizzato.  
@@ -315,11 +314,14 @@ Vi chiederete se è un caso che l'hostname sia proprio uguale all'ID 'abbreviato
 Come abbiamo visto, possiamo eseguire in background i nostri container, ma potremmo aver bisogno di bloccarne l'esecuzione, o rimuovere container che non utilizziamo più.
 Per interrompere l'esecuzione di un container, possiamo utilizzare il comando '**podman stop**' specificando il nome o l'identificativo del container che desideriamo interrompere:
 
-[alex@pollos do080]$ podman stop 30fa500dc200
-30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f
+    [student@workstation do080]$ podman stop 30fa500dc200
+    30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f  
+
 Possiamo verificare immediatamente che il nostro container non è più in esecuzione:
-[alex@pollos do080]$ podman ps
-CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS  PORTS  NAMES
+
+    [student@workstation do080]$ podman ps
+    CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS  PORTS  NAMES
+
 
 Tuttavia, utilizzando l'opzione '-a' possiamo vedere che il container è ancora 'presente' nel nostro sistema:
 
