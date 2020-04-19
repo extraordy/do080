@@ -103,13 +103,13 @@ Tuttavia questo ci impedisce di fare qualsiasi altra azione, in quanto l'interru
 
 Per questo Podman, analogamente a Docker, ci mette a disposizione una opzione, '**-d**'  o '**--detach**' che ci permette di mandare in background l'esecuzione del nostro container:
 
-    [alex@pollos do080]$ podman run -d -p 8080:80 httpd 
+    [student@workstation do080]$ podman run -d -p 8080:80 httpd 
     30fa500dc20090c20d8c1307e182bbc0c2cd8cfdb9934df5a1fb5355d9778c1f
 Come vedete, viene 'staccato' un identificativo, che rappresenta l'ID del container che stiamo eseguendo.
 
 Possiamo facilmente testare la bontà dell'esecuzione, con una semplice **curl**:
 
-    [alex@pollos do080]$ curl localhost:8080
+    [student@workstation do080]$ curl localhost:8080
     <html><body><h1>It works!</h1></body></html>
 
 ## Eseguire comandi all'interno di un container
@@ -117,7 +117,7 @@ Abbiamo visto che, nel nostro container di esempio, l'immagine httpd al termine 
 In realtà, non tutte le immagini necessariamente 'eseguono' qualcosa al loro interno, e comunque qualsiasi sia il comando che viene eseguito, può essere sovrascritto da linea di comando.
 Tornando alla nostra immagine httpd, ora il container è in esecuzione in background, ma potremmo ad esempio lanciare una nuova istanza, che semplicemente ci stampi l'hostname del container in cui andrà ad essere eseguita la nostra immagine:
 
-    [alex@pollos do080]$ podman run httpd hostname
+    [student@workstation do080]$ podman run httpd hostname
     5c55979cfe57
 
 Possiamo facilmente verificare, utilizzando il comando **podman ps**, che l'unico container in esecuzione è ancora quello lanciato in precedenza, mentre il successivo 'run' ha creato un container, eliminato subito dopo la sua esecuzione:
