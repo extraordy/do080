@@ -84,6 +84,32 @@ A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret
 Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
 ![](images/pull-secret.png)
 
+Una volta inserita, l'installazione proseguirà:
+
+
+    INFO Extracting bundle: crc_hyperv_4.3.8.crcbundle ...
+    INFO Checking size of the disk image C:\Users\ale\.crc\cache\crc_hyperv_4.3.8\crc.vhdx ...
+    INFO Creating CodeReady Containers VM for OpenShift 4.3.8...
+    INFO Verifying validity of the cluster certificates ...
+    INFO Will run as admin: add dns server address to interface vEthernet (Default Switch)
+    INFO Check internal and public DNS query ...
+    INFO Check DNS query from host ...
+    INFO Copying kubeconfig file to instance dir ...
+    INFO Adding user's pull secret ...
+    INFO Updating cluster ID ...
+    INFO Starting OpenShift cluster ... [waiting 3m]
+    INFO
+    INFO To access the cluster, first set up your environment by following 'crc oc-env' instructions
+    INFO Then you can access it by running 'oc login -u developer -p developer https://api.crc.testing:6443'
+    INFO To login as an admin, run 'oc login -u kubeadmin -p kKdPx-pjmWe-b3kuu-jeZm3 https://api.crc.testing:6443'
+    INFO
+    INFO You can now run 'crc console' and use these credentials to access the OpenShift web console
+    Started the OpenShift cluster
+    WARN The cluster might report a degraded or error state. This is expected since several operators have been disabled to lower the resource usage. For more information, please consult the documentation
+
+Al termine dell'installazione viene generata una password per l'utente developer (pass: developer) e per l'utente amministratore **kubeadmin** che dovrete salvare per poter accedere al vostro cluster!
+
+
 ## Installazione su Linux
 
 Affinchè sia possibile installare CodeReadyContainers (CRC) su una macchina Linux, è necessario che siano verificate ed installate le sue uniche dipendenze, **libvirt** e **NetworkManager**.
@@ -158,7 +184,7 @@ A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret
 Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
 ![](images/pull-secret.png)
 
-Il resto del processo è qualcosa di simile, alla fine viene generata una password per l'utente developer che dovrete salvare per poter accedere al vostro cluster!
+Il resto del processo è qualcosa di simile, al termine dell'installazione viene generata una password per l'utente developer (pass: developer) e l'utente amministratore **kubeadmin** che dovrete salvare per poter accedere al vostro cluster!
 
     INFO Loading bundle: crc_libvirt_4.3.8.crcbundle ... 
     INFO Checking size of the disk image /home/alex/.crc/cache/crc_libvirt_4.3.8/crc.qcow2 ... 
@@ -246,7 +272,7 @@ A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret
 Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
 ![](images/pull-secret.png)
 
-Il resto del processo è qualcosa di simile, alla fine viene generata una password per l'utente developer che dovrete salvare per poter accedere al vostro cluster!
+Il resto del processo è qualcosa di simile, al termine dell'installazione viene generata una password per l'utente developer (pass: developer) e l'utente amministratore **kubeadmin** che dovrete salvare per poter accedere al vostro cluster!
 
     INFO Checking size of the disk image /Users/alessandro/.crc/cache/crc_hyperkit_4.3.8/crc.qcow2 ... 
     INFO Creating CodeReady Containers VM for OpenShift 4.3.8... 
