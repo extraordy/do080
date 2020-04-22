@@ -1,7 +1,0 @@
----
-distros:
-  - fc28
-  - fc27
-  - el7
-release_branches:
-  master: ["ovirt-master", "ovirt-4.2"]

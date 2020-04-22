@@ -1,4 +1,0 @@
-*.retry
-*.pyc
-.tox/
-tests/wrapper/__pycache__/

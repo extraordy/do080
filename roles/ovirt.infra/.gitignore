@@ -1,6 +1,0 @@
-*retry
-.tox
-*.tar.gz
-output/
-ovirt-ansible-infra.spec
-exported-artifacts/

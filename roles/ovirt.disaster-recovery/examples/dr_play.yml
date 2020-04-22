@@ -1,6 +1,0 @@
----
-- name: Setup oVirt environment
-  hosts: localhost
-  connection: local
-  roles:
-     - oVirt.disaster-recovery

@@ -1,6 +1,0 @@
----
-- name: Disable conversion host role
-  hosts: all
-  roles:
-    - role: oVirt.v2v-conversion-host
-      role_action: uninstall

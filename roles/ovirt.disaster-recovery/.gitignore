@@ -1,6 +1,0 @@
-*retry
-.tox
-*.tar.gz
-output/
-ovirt-ansible-disaster-recovery.spec
-exported-artifacts/
