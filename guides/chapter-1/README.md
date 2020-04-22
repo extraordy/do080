@@ -1,4 +1,4 @@
-#Approccio tradizionale del deployment applicativo
+# Approccio tradizionale del deployment applicativo
 
 In un approccio tradizionale le applicazioni vengono installate su un sistema operativo e richiedono l’utilizzo di librerie condivise e/o proprietarie. Il sistema operativo può essere installato direttamente sull’hardware o può essere installato in macchine virtuali utilizzando un hypervisor come KVM (utilizzato per esempio in Red Hat Virtualization), VMware ESX, Hyper-V o Oracle VM VirtualBox.
 
@@ -31,7 +31,7 @@ Come gestisco le patch di sicurezza di tutti i sistemi operativi delle VM? In ca
 Questi sono alcuni dei problemi che i linux container risolvono.
 
 
-#Utilizzo dei linux container per il deployment applicativo
+# Utilizzo dei linux container per il deployment applicativo
 
 I linux container sono dei processi linux in grado di accogliere le nostre applicazioni.
 
