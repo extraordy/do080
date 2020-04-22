@@ -1,0 +1,13 @@
+---
+# stop_pinned_to_host_vms is alias for stop_non_migratable_vms
+stop_non_migratable_vms: "{{ stop_pinned_to_host_vms | default(false) }}"
+upgrade_timeout: 3600
+cluster_name: Default
+check_upgrade: false
+reboot_after_upgrade: true
+use_maintenance_policy: true
+host_statuses:
+  - up
+host_names:
+  - '*'
+pinned_vms_names: []

@@ -1,0 +1,8 @@
+---
+- name: Validate RHV host -- RHV version requirement
+  command: /usr/bin/virt-v2v-wrapper.py --check-rhv-version
+  when: v2v_checks_override is not defined or not v2v_checks_override
+
+- name: Validate RHV host -- RHV Guest Tools
+  command: /usr/bin/virt-v2v-wrapper.py --check-rhv-guest-tools
+  when: v2v_checks_override is not defined or not v2v_checks_override

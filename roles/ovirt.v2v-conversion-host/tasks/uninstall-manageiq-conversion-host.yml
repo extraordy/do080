@@ -1,0 +1,46 @@
+---
+- name: Get the conversion host href
+  uri:
+    url: "{{ manageiq_url }}/api/conversion_hosts/?expand=resources&attributes=resource&filter[]=name={{ inventory_hostname }}"
+    user: "{{ manageiq_username }}"
+    password: "{{ manageiq_password }}"
+    method: "GET"
+    validate_certs: "{{ manageiq_validate_certs | default(true) }}"
+  register: manageiq_conversion_hosts_json
+
+- set_fact:
+    manageiq_conversion_host: "{{ manageiq_conversion_hosts_json.json | json_query('resources[*]') | first }}"
+
+- block:
+    - name: Delete the conversion host record in ManageIQ
+      uri:
+        url: "{{ manageiq_conversion_host.href }}"
+        user: "{{ manageiq_username }}"
+        password: "{{ manageiq_password }}"
+        method: "DELETE"
+        status_code: 204
+        validate_certs: "{{ manageiq_validate_certs | default(true) }}"
+
+    - set_fact:
+        manageiq_conversion_host_resource_type: "{{ manageiq_conversion_host.resource.type.split('::') | last | lower }}"
+
+    - name: Untag conversion host resource
+      uri:
+        url: "{{ manageiq_url }}/api/{{ manageiq_conversion_host_resource_type }}s/{{ manageiq_conversion_host.resource.id }}/tags"
+        user: "{{ manageiq_username }}"
+        password: "{{ manageiq_password }}"
+        method: "POST"
+        validate_certs: "{{ manageiq_validate_certs | default(true) }}"
+        body_format: "json"
+        body:
+          action: "unassign"
+          resources:
+            - category: "v2v_transformation_host"
+              name: "true"
+            - category: "v2v_transformation_method"
+              name: "vddk"
+            - category: "v2v_transformation_method"
+              name: "ssh"
+
+  when:
+    - "manageiq_conversion_host is defined"

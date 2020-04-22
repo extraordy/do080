@@ -1,0 +1,40 @@
+---
+- name: Stat VDDK library
+  stat:
+    path: "{{ v2v_vddk_install_dir }}/vmware-vix-disklib-distrib/lib64/libvixDiskLib.so"
+  ignore_errors: "yes"
+  register: stat_vddk_library
+
+- name: Stat VDDK nbdkit plugin
+  stat:
+    path: "/usr/lib64/nbdkit/plugins/nbdkit-vddk-plugin.so"
+  ignore_errors: "yes"
+  register: stat_nbdkit_plugin
+
+- name: Check if VDDK nbdkit plugin works
+  command: nbdkit --dump-plugin vddk
+  environment:
+    LD_LIBRARY_PATH: "{{ v2v_vddk_install_dir }}/vmware-vix-disklib-distrib/lib64"
+  ignore_errors: "yes"
+  register: command_nbdkit_plugin
+
+- name: Set VDDK and nbdkit facts
+  set_fact:
+    v2v_vddk_library_installed: "{{ stat_vddk_library.stat.exists }}"
+    v2v_nbdkit_plugin_installed: "{{ stat_nbdkit_plugin.stat.exists }}"
+    v2v_nbdkit_plugin_working: "{{ command_nbdkit_plugin.rc == 0 }}"
+
+- name: Print the check result
+  debug:
+    msg: "VDDK installed: {{ v2v_vddk_library_installed }}. nbdkit plugin installed: {{ v2v_nbdkit_plugin_installed }}. nbdkit plugin working: {{ v2v_nbdkit_plugin_working }}."
+
+- name: Fail if we are running a check from CloudForms
+  assert:
+    msg: "We do a formal check for ManageIQ and it failed"
+    that:
+      - v2v_vddk_library_installed
+      - v2v_nbdkit_plugin_installed
+      - v2v_nbdkit_plugin_working
+  when:
+    - v2v_manageiq_conversion_host_check is defined
+    - v2v_manageiq_conversion_host_check

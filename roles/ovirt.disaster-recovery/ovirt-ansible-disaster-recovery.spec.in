@@ -1,0 +1,91 @@
+%global rolename disaster-recovery
+%global roleprefix oVirt.
+%global ansible_roles_dir ansible/roles
+
+Name: @PACKAGE_NAME@
+Summary: Ansible role to perform disaster recovery for oVirt engine
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@%{?release_suffix}%{?dist}
+Source0: http://resources.ovirt.org/pub/src/@PACKAGE_NAME@/@PACKAGE_NAME@-@PACKAGE_VERSION@.tar.gz
+License: ASL 2.0
+Group:          Virtualization/Management
+BuildArch:      noarch
+Url:            http://www.ovirt.org
+
+Requires: ansible >= 2.7.2
+
+%description
+This Ansible role provide funtionality to perform disaster recovery for oVirt engine.
+
+%prep
+%setup -c -q
+
+%build
+
+%install
+export PKG_DATA_DIR_ORIG=%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+export PKG_DATA_DIR=%{buildroot}$PKG_DATA_DIR_ORIG
+export PKG_DOC_DIR=%{buildroot}%{_pkgdocdir}
+sh build.sh install
+
+%files
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+
+%doc README.md
+%doc examples/
+
+%license LICENSE
+
+%changelog
+* Tue Feb 27 2020 Eyal Shenitzky <eshenitz@redhat.com> - 1.3.0-0.1
+- Fix ansible-lint, yaml-lint and Python code style errors
+- Fix shebang for Python-3 scripts
+
+* Tue Jul 23 2019 Eyal Shenitzky <eshenitz@redhat.com> - 1.2.0-1
+- Convert python scripts to support both Python 2 and Python 3
+
+* Thu Jan 10 2019 Eyal Shenitzky <eshenitz@redhat.com> - 1.1.4-1
+- Rename all tasks module calls from plural to singular
+- Use ovirt_vm.py module from Ansible lib instead local lib ovirt_vms.py module
+- Required Ansible >= 2.7.2
+
+* Wed Oct 31 2018 Maor Lipchuk <mlipchuk@redhat.com> - 1.1.3-1
+- rhbz#1640155 - Use vars instead of inline variables for include_tasks
+
+* Wed Sep 12 2018 Maor Lipchuk <mlipchuk@redhat.com> - 1.1.2-1
+- rhbz#1533404 - Support unregistered entities in file
+- rhbz#1589535 - Support validation for previewed VMs and delete protected VMs
+
+* Thu Jul 19 2018 Maor Lipchuk <mlipchuk@redhat.com> - 1.1.1-1
+- rhbz#1576934 - Support dc name for vnic profile mapping
+- rhbz#1588557 - Avoid using VaultLib
+- rhbz#1589535 - Log file should not be part of validate task
+
+* Thu May 17 2018 Maor Lipchuk <mlipchuk@redhat.com> - 1.1.0-1
+- Add missing names to include tasks
+- Configure report file name on failover and failback
+- Add missing file of vault secret to be used for fail_back.py
+- Adjust Change default values in dr.conf
+- Exclude export SD in generator and validator
+- rhbz#1575984 - Print failure message for failover and failback
+- rhbz#1576553 - Fail back cleans storage domains which are not active, even if they are not written in the mapped var file
+- rhbz#1576602 - Solve Missing dependencies, Make the script code compatible for RHEL
+- rhbz#1574309 - Support Log and scripts
+
+* Thu May 3 2018 Ondra Machacek <omachace@redhat.com> - 0.4-1
+- Add ignore errors to all included tasks.
+- Require Ansible 2.5.
+- Add python scripts for generate_mapping.
+- Add python validator script for mapping file
+- Support include_tasks in ovirt-disaste-recovery.
+
+* Thu Mar 1 2018 Ondra Machacek <omachace@redhat.com> - 0.3-1
+- Add reports about the status of a storage domain import.
+
+* Tue Feb 20 2018 Ondra Machacek <omachace@redhat.com> - 0.2-1
+- Add discard after delete to block storage domains when generate mapping.
+- Support cleanup of mapped storage domain.
+- Master storage domain should be configured for each setup.
+
+* Thu Jan 4 2018 Ondra Machacek <omachace@redhat.com> - 0.1-1
+- Initial release

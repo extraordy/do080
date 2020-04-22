@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  author: "Ondra Machacek"
+  description: "oVirt Ansible roles"
+  company: Red Hat, Inc.
+  license: Apache License 2.0
+  min_ansible_version: 2.9
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+  galaxy_tags: [ovirt, rhv, rhev, virtualization]
+
+dependencies:
+ - ovirt.cluster-upgrade
+ - ovirt.disaster-recovery
+ - ovirt.engine-setup
+ - ovirt.image-template
+ - ovirt.infra
+ - ovirt.manageiq
+ - ovirt.repositories
+ - ovirt.vm-infra
+ - ovirt.v2v-conversion-host
+ - ovirt.hosted_engine_setup
+ - ovirt.shutdown_env

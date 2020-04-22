@@ -1,0 +1,164 @@
+%global rolename vm-infra
+%global roleprefix ovirt.
+%global roleprefix_legacy ovirt-
+%global roleprefix_legacy_uppercase oVirt.
+%global ansible_roles_dir ansible/roles
+
+Name: @PACKAGE_NAME@
+Summary: Ansible role to create virtual machine infrastructure
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@%{?release_suffix}%{?dist}
+Source0: http://resources.ovirt.org/pub/src/@PACKAGE_NAME@/@PACKAGE_NAME@-@PACKAGE_VERSION@.tar.gz
+License: ASL 2.0
+Group:          Virtualization/Management
+BuildArch:      noarch
+Url:            http://www.ovirt.org
+
+Requires: ansible >= 2.9.0
+%if 0%{?rhel} <= 7
+Requires: python-jmespath
+%else
+Requires: python3-jmespath
+%endif
+
+%description
+This Ansible role provide funtionality to create virtual machine infrastructure.
+
+%pretrans -p <lua>
+-- Remove the legacy directory before installing the symlink. This is known issue in RPM:
+-- https://fedoraproject.org/wiki/Packaging:Directory_Replacement
+path_dash = "%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}"
+path_uppercase = "%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}"
+
+st = posix.stat(path_dash)
+if st and st.type == "directory" then
+  os.execute('rm -rf "'..path_dash..'"')
+end
+
+st = posix.stat(path_uppercase)
+if st and st.type == "directory" then
+  os.execute('rm -rf "'..path_uppercase..'"')
+end
+
+%prep
+%setup -c -q
+
+%build
+
+%install
+export PKG_DATA_DIR_ORIG=%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+export PKG_DATA_DIR=%{buildroot}$PKG_DATA_DIR_ORIG
+export PKG_DOC_DIR=%{buildroot}%{_pkgdocdir}
+export ROLENAME_LEGACY=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}
+export ROLENAME_LEGACY_UPPERCASE=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}
+sh build.sh install
+
+%files
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}
+
+%doc README.md
+%doc examples/
+
+%license LICENSE
+
+%changelog
+* Tue Apr 7 2020 Martin Necas <mnecas@redhat.com> - 1.2.2-1
+- Add jmespath to requirements
+- Add host vm parameter
+
+* Mon Dec 2 2019 Martin Necas <mnecas@redhat.com> - 1.2.1-1
+- Add build for el8.
+
+* Mon Nov 25 2019 Martin Necas <mnecas@redhat.com> - 1.2.0-1
+- Bump ansible to version 2.9.0.
+
+* Wed Nov 13 2019 Ondra Machacek <omachace@redhat.com> - 1.1.22-1
+- Add option to configure Affinity labels.
+- Fix cloud-init initialization.
+- Add sysprep parameter.
+
+* Tue Aug 27 2019 Ondra Machacek <omachace@redhat.com> - 1.1.21-1
+- Fix sysprep support.
+- Allow setting the memory balooning for a VM.
+
+* Thu Jul 11 2019 Ondra Machacek <omachace@redhat.com> - 1.1.20-1
+- Rename filter name to avoid collion with other oVirt roles.
+
+* Tue Jul 9 2019 Ondra Machacek <omachace@redhat.com> - 1.1.19-1
+- Profile is not mandatory for vms variable.
+- Support sysprep for windows vms.
+- Allow set format of the disk.
+- Fix running in multiple plays.
+
+* Tue Jun 18 2019 Ondra Machacek <omachace@redhat.com> - 1.1.18-1
+- Fix cloud init.
+
+* Mon Jun 17 2019 Ondra Machacek <omachace@redhat.com> - 1.1.17-1
+- Don't require to specify disk ID.
+
+* Fri Jun 14 2019 Ondra Machacek <omachace@redhat.com> - 1.1.16-1
+- Support disk rename.
+- Support disk activation.
+- Support waiting for IP range.
+
+* Wed May 15 2019 Ondra Machacek <omachace@redhat.com> - 1.1.15-1
+- Add resize template disk feature.
+- Add serial policy parameters.
+
+* Tue Mar 12 2019 Ondra Machacek <omachace@redhat.com> - 1.1.14-1
+- Add boot_devices to config.
+
+* Fri Mar 8 2019 Ondra Machacek <omachace@redhat.com> - 1.1.13-1
+- Move the affinity group configuration further up the list.
+- Adding support for cpu_mode and placement_policy.
+
+* Wed Nov 21 2018 Ondra Machacek <omachace@redhat.com> - 1.1.12-1
+- Support ovirt.vm-infra name.
+- Require Ansible 2.7.2.
+
+* Tue Oct 16 2018 Ondra Machacek <omachace@redhat.com> - 1.1.11-1
+- Correct spliting vms. gh#50
+- Workaround to fix async tasks of PR #44726. gh#52
+
+* Tue Sep 18 2018 Ondra Machacek <omachace@redhat.com> - 1.1.10-1
+- Add io_threads parameter to the role. gh#45
+- Add operating system and type to vm creation. gh#46
+- Package filter_plugins. gh#49
+
+* Wed Aug 15 2018 Ondra Machacek <omachace@redhat.com> - 1.1.9-1
+- Add ability to specify FQDN instead of URL.
+- Add new lease parameter to VM.
+- Add support to use the role from AWX.
+- Create inventory from VMs.
+- Support absent state.
+
+* Wed May 30 2018 Ondra Machacek <omachace@redhat.com> - 1.1.8-1
+- Added clone and template_version to role.
+- Support legacy cloud init.
+- Improve vm-infra parameters support.
+
+* Thu Apr 26 2018 Ondra Machacek <omachace@redhat.com> - 1.1.7-1
+- Non administrator accounts can't use tag attribute
+  rhbz#1570153, rhbz#1549082
+
+* Tue Apr 10 2018 Ondra Machacek <omachace@redhat.com> - 1.1.6-1
+- Require Ansible 2.5.
+
+* Tue Feb 20 2018 Ondra Machacek <omachace@redhat.com> - 1.1.5-1
+- Change wait_for_ip to false by default.
+- Add nics attribute to vms list.
+- Change default state to present. (rhbz#1539722, rhbz#1491010)
+
+* Wed Jan 17 2018 Ondra Machacek <omachace@redhat.com> - 1.1.4-1
+- Support RHV credentials for Ansible Tower/AWX.
+
+* Mon Dec 04 2017 Ondra Machacek <omachace@redhat.com> - 1.1.3-1
+- Add %pretrans scriplet to remove legacy role name.
+
+* Wed Nov 29 2017 Ondra Machacek <omachace@redhat.com> - 1.1.2-1
+- Rename prefix ovirt. to oVirt. to sync with galaxy
+
+* Mon Nov 27 2017 Ondra Machacek <omachace@redhat.com> - 1.1.0-1
+- Initial release

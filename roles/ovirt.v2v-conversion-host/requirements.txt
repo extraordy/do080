@@ -1,0 +1,2 @@
+ovirt-engine-sdk-python
+pycurl

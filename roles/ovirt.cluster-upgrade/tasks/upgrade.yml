@@ -1,0 +1,62 @@
+- name: Get list of VMs in host
+  ovirt_vm_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: "cluster={{ cluster_name }} and host={{ item.name }} and status=up"
+  check_mode: "no"
+
+- name: Move user migratable vms
+  ovirt_vm:
+    auth: "{{ ovirt_auth }}"
+    force_migrate: true
+    migrate: true
+    state: running
+    name: "{{ item.name }}"
+  register: resp
+  when:
+    - "item['placement_policy']['affinity'] == 'user_migratable'"
+  with_items:
+    - "{{ vms_in_cluster.ovirt_vms }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Shutdown non-migratable VMs
+  ovirt_vm:
+    auth: "{{ ovirt_auth }}"
+    state: stopped
+    force: true
+    name: "{{ item.name }}"
+  with_items:
+    - "{{ vms_in_cluster.ovirt_vms }}"
+  when:
+    - "item['placement_policy']['affinity'] == 'pinned'"
+  loop_control:
+    label: "{{ item.name }}"
+  register: pinned_to_host_vms
+
+- name: Create list of VM names which was shutted down
+  set_fact:
+    pinned_vms_names: "{{ pinned_vms_names + pinned_to_host_vms.results | selectattr('changed') | map(attribute='item.name') | list }}"
+
+- name: Start ovirt job step
+  ovirt_job:
+    auth: "{{ ovirt_auth }}"
+    description: "Upgrading hosts"
+    steps:
+      - description: "Upgrading host: {{ item.name }}"
+
+- name: Upgrade host
+  ovirt_host:
+    auth: "{{ ovirt_auth }}"
+    name: "{{ item.name }}"
+    state: upgraded
+    check_upgrade: "{{ check_upgrade }}"
+    reboot_after_upgrade: "{{ reboot_after_upgrade }}"
+    timeout: "{{ upgrade_timeout }}"
+
+- name: Finish ovirt job step
+  ovirt_job:
+    auth: "{{ ovirt_auth }}"
+    description: "Upgrading hosts"
+    steps:
+      - description: "Upgrading host: {{ item.name }}"
+        state: finished

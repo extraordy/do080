@@ -1,0 +1,47 @@
+---
+- assert:
+    that: "{{ item }} is defined"
+    msg: "Variable '{{ item }}' is mandatory to {{ role_action }} VDDK pluging."
+  with_items:
+    - v2v_build_dir
+    - v2v_vddk_install_dir
+    - v2v_vddk_package_name
+    - v2v_vddk_package_url
+
+- name: Clean any previous VDDK
+  file:
+    path: "{{ v2v_vddk_install_dir }}/vmware-vix-disklib-distrib/"
+    state: absent
+
+- name: Create directory for VDDK
+  file:
+    path: "{{ v2v_vddk_install_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Download the VDDK package
+  get_url:
+    url: "{{ v2v_vddk_package_url }}"
+    dest: "/tmp/{{ v2v_vddk_package_name }}"
+    mode: 0600
+
+- name: Extract VDDK
+  unarchive:
+    src: "/tmp/{{ v2v_vddk_package_name }}"
+    dest: "{{ v2v_vddk_install_dir }}"
+    remote_src: true
+
+- name: Remove the downloaded file
+  file:
+    path: "/tmp/{{ v2v_vddk_package_name }}"
+    state: absent
+
+# If nbdkit < 1.2.4, build and install our own VDDK plugin RPM
+- include_tasks: "install-transport-vddk-nbdkit-plugin-vddk-rpm.yml"
+  when:
+    - pkg_nbdkit.stdout is version_compare('1.2.4', '<')
+
+- name: Make sure VDDK plugin is installed
+  yum:
+    state: "{{ v2v_yum_check }}"
+    name: nbdkit-plugin-vddk

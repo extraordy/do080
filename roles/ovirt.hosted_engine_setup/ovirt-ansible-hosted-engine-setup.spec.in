@@ -1,0 +1,71 @@
+%global rolename hosted_engine_setup
+%global roleprefix ovirt.
+%global legacy_roleprefix oVirt.
+%global legacy_rolename hosted-engine-setup
+%global ansible_roles_dir ansible/roles
+
+Name: @PACKAGE_NAME@
+Summary: Ansible role to install required packages for oVirt Engine deployment, generate answerfile and run engine-setup with it.
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@%{?release_suffix}%{?dist}
+Source0: http://resources.ovirt.org/pub/src/@PACKAGE_NAME@/@PACKAGE_NAME@-@PACKAGE_VERSION@.tar.gz
+License: ASL 2.0
+Group:          Virtualization/Management
+BuildArch:      noarch
+Url:            http://www.ovirt.org
+
+Requires: ansible >= 2.7
+%if 0%{?fedora} >= 30 || 0%{?rhel} >= 8
+Requires: python3-netaddr
+Requires: python3-jmespath
+Requires: python3-passlib
+%else
+Requires: python-netaddr
+Requires: python-jmespath
+Requires: python-passlib
+%endif
+Requires: ovirt-ansible-engine-setup >= 1.1.5
+
+%description
+This Ansible role installs required packages for oVirt Hosted-Engine deployment.
+
+%pretrans -p <lua>
+-- Remove the legacy directory before installing the symlink. This is known issue in RPM:
+-- https://fedoraproject.org/wiki/Packaging:Directory_Replacement
+rolename_legacy = "%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{legacy_rolename}"
+rolename_legacy_uppercase="%{_datadir}/%{ansible_roles_dir}/%{legacy_roleprefix}%{legacy_rolename}"
+
+st1 = posix.stat(rolename_legacy)
+if st1 and st1.type == "directory" then
+  os.execute('rm -rf "'..rolename_legacy..'"')
+end
+
+st2 = posix.stat(rolename_legacy_uppercase)
+if st2 and st2.type == "directory" then
+  os.execute('rm -rf "'..rolename_legacy_uppercase..'"')
+end
+
+%prep
+%setup -c -q
+
+%build
+
+%install
+export PKG_DATA_DIR_ORIG=%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+export PKG_DATA_DIR=%{buildroot}$PKG_DATA_DIR_ORIG
+export PKG_DOC_DIR=%{buildroot}%{_pkgdocdir}
+export ROLENAME_LEGACY=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{legacy_rolename}
+export ROLENAME_LEGACY_UPPERCASE=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{legacy_roleprefix}%{legacy_rolename}
+sh build.sh install
+
+%files
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+%{_datadir}/%{ansible_roles_dir}/%{legacy_roleprefix}%{legacy_rolename}
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{legacy_rolename}
+
+%doc README.md
+%doc examples/
+
+%license LICENSE
+
+%changelog

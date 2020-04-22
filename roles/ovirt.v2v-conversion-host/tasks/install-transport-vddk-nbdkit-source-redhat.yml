@@ -1,0 +1,23 @@
+---
+- name: Download nbdkit SRPM
+  command: yumdownloader --source nbdkit
+  args:
+    chdir: "{{ v2v_build_dir }}"
+
+- name: Identify nbdkit SRPM
+  find:
+    paths: "{{ v2v_build_dir }}"
+    patterns: "nbdkit-[0-9]*.src.rpm"
+    recurse: "no"
+    use_regex: "no"
+  register: nbdkit_srpm
+
+- name: Extract nbdkit SRPM
+  command: >
+    rpm --install
+    --define "_topdir {{ v2v_build_dir|quote }}"
+    --define "_sourcedir {{ v2v_build_dir|quote }}"
+    --define "_specdir {{ v2v_build_dir|quote }}"
+    "{{ nbdkit_srpm.files[0].path }}"
+  args:
+    chdir: "{{ v2v_build_dir }}"

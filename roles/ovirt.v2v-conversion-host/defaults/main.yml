@@ -1,0 +1,10 @@
+---
+v2v_facts_dir: /etc/ansible/facts.d
+v2v_facts_file: vddk.fact
+v2v_vddk_override: false
+v2v_vddk_install_dir: /opt
+v2v_build_dir: /tmp/nbdkit-plugin
+v2v_yum_check: latest
+v2v_host_type: rhv
+manageiq_username: admin
+manageiq_password: smartvm

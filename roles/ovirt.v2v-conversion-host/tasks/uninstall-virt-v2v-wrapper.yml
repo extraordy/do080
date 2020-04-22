@@ -1,0 +1,5 @@
+---
+- name: Remove virt-v2v wrapper
+  file:
+    path: "/usr/bin/virt-v2v-wrapper.py"
+    state: absent

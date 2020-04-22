@@ -1,0 +1,23 @@
+---
+# ----------------------- Provider Configuration ----------------------------
+
+- set_fact:
+    manageiq_provider: "{{ item }}"
+  when:
+    - "item.name == manageiq_provider_name"
+  with_items: "{{ manageiq_providers }}"
+
+- block:
+    - include_tasks: "uninstall-provider-ssl-ca-chain.yml"
+    - include_tasks: "uninstall-manageiq-conversion-host.yml"
+  when:
+    - "manageiq_provider is defined"
+
+- include_tasks: "uninstall-provider-{{ v2v_host_type }}.yml"
+
+- include_tasks: "uninstall-transport-{{ transport_method }}.yml"
+  loop: "{{ v2v_transport_methods }}"
+  loop_control:
+    loop_var: transport_method
+
+- include_tasks: "uninstall-virt-v2v-wrapper.yml"

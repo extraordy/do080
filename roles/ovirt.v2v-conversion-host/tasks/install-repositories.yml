@@ -1,0 +1,14 @@
+---
+- block:
+    - name: Check if metadata exist for empty repo
+      stat:
+        path: /opt/yum/empty/repodata
+      ignore_errors: true
+      register: empty_repodata
+
+    - name: Create metadata for empty repo
+      command: /usr/bin/createrepo /opt/yum/empty
+      when:
+        - "not empty_repodata.stat.exists"
+  when:
+    - "v2v_host_type == 'openstack'"

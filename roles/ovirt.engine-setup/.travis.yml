@@ -1,0 +1,44 @@
+---
+sudo: required
+language: python
+python:
+    - "2.7"
+
+services:
+  - docker
+
+env:
+  global:
+    - ANSIBLE_HOST_KEY_CHECKING="False"
+    - ANSIBLE_ROLES_PATH=tests/roles:tests/roles-deps
+  matrix:
+    - TEST_NAME=4.1
+    - TEST_NAME=master
+    - TEST_NAME=upgrade-4.1-to-master
+# Tests on previous versions cannot be enabled on Centos
+# because of https://github.com/rhevm-qe-automation/ovirt-ansible/issues/155
+
+# Install python-pip
+addons:
+  apt:
+    packages:
+      - python-pip
+
+install:
+  - pip install tox ansible docker-py
+
+  # Check ansible version
+  - ansible --version
+
+  # Install ansible role tests requirements
+  - ansible-galaxy install -r tests/requirements.yml -p tests/roles-deps/
+
+script:
+  # Run sytax checks and linters
+  - tox
+  # Execute oVirt engine deployment playbook
+  # Disable temporarly:
+  #- travis_wait 20 ansible-playbook tests/test-${TEST_NAME}.yml -i tests/inventory --skip-tags skip-travis -vvv
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

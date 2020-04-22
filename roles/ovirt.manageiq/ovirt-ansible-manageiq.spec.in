@@ -1,0 +1,139 @@
+%global rolename manageiq
+%global roleprefix ovirt.
+%global roleprefix_legacy ovirt-
+%global roleprefix_legacy_uppercase oVirt.
+%global ansible_roles_dir ansible/roles
+
+Name: @PACKAGE_NAME@
+Summary: Ansible role to create ManageIQ or CloudForms virtual machine from qcow image
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@%{?release_suffix}%{?dist}
+Source0: http://resources.ovirt.org/pub/src/@PACKAGE_NAME@/@PACKAGE_NAME@-@PACKAGE_VERSION@.tar.gz
+License: ASL 2.0
+Group:          Virtualization/Management
+BuildArch:      noarch
+Url:            http://www.ovirt.org
+
+Requires: ansible >= 2.9.0
+
+%description
+This Ansible role provide funtionality to create ManageIQ or CloudForms virtual
+machine from qcow image.
+
+%pretrans -p <lua>
+-- Remove the legacy directory before installing the symlink. This is known issue in RPM:
+-- https://fedoraproject.org/wiki/Packaging:Directory_Replacement
+path_dash = "%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}"
+path_uppercase = "%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}"
+
+st = posix.stat(path_dash)
+if st and st.type == "directory" then
+  os.execute('rm -rf "'..path_dash..'"')
+end
+
+st = posix.stat(path_uppercase)
+if st and st.type == "directory" then
+  os.execute('rm -rf "'..path_uppercase..'"')
+end
+
+%prep
+%setup -c -q
+
+%build
+
+%install
+export PKG_DATA_DIR_ORIG=%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+export PKG_DATA_DIR=%{buildroot}$PKG_DATA_DIR_ORIG
+export PKG_DOC_DIR=%{buildroot}%{_pkgdocdir}
+export ROLENAME_LEGACY=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}
+export ROLENAME_LEGACY_UPPERCASE=%{buildroot}%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}
+sh build.sh install
+
+%files
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix}%{rolename}
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy}%{rolename}
+%{_datadir}/%{ansible_roles_dir}/%{roleprefix_legacy_uppercase}%{rolename}
+
+%doc README.md
+%doc examples/
+
+%license LICENSE
+
+%changelog
+* Mon Dec 2 2019 Martin Necas <mnecas@redhat.com> - 1.2.1-1
+- Add build for el8.
+
+* Mon Nov 25 2019 Martin Necas <mnecas@redhat.com> - 1.2.0-1
+- Bump ansible to version 2.9.0.
+
+* Wed May 15 2019 Ondra Machacek <omachace@redhat.com> - 1.1.14-1
+- Don't try to re-init miq when initiailized.
+
+* Thu Nov 29 2018 Ondra Machacek <omachace@redhat.com> - 1.1.13-1
+- Change default disks interface to virtio_scsi.
+- Support ovirt.manageiq name.
+- Require Ansible 2.7.2.
+
+* Tue Sep 18 2018 Ondra Machacek <omachace@redhat.com> - 1.1.12-1
+- Document additional disks works with CFME only. rhbz#1627020
+- Skip region settings in case of ManageIQ. rhbz#1627018
+- Don't fail if miq_vm_disk_storage is defined. rhbz#1624836
+- RHV provider can be added using env vars. rhbz#1613914
+- Document that dry mode is unsupported. rhbz#1614314
+- Support using engine_fqdn instead of url. rhbz#1613914
+- Use corect IDs for MiQ region number. rhbz#1592857
+- Add miq_wait_for_ip_version variable. rhbz#1613723
+- Add miq_debug_create to disable no_log. gh#62
+- Add support for OVIRT_HOSTNAME env var.
+- Add possibility to login external from role.
+- Fix ternary operator in ovirt_auth. rhbz#1584772
+
+* Mon Jul 9 2018 Ondra Machacek <omachace@redhat.com> - 1.1.11-1
+- Can't set password via miq_app_password variable. rhbz#1590336
+
+* Thu Jun 7 2018 Ondra Machacek <omachace@redhat.com> - 1.1.10-1
+- Add /vars directory to RPM. rhbz@1588415
+
+* Wed May 30 2018 Ondra Machacek <omachace@redhat.com> - 1.1.9-1
+- Fix JSON generation for RHV provider registration
+- Add default values for metrics variables
+- Create appliance disk names based on it's type
+- Add embedded ansible as a default service to example
+- Disable cloud-init service after deployment
+- Don't hardcode /tmp/ovirt_image_path
+- Update to Gaprindashvili-3
+- Add root user to cfme appliance inventory
+- Add support to disable/enable roles on the appliance.
+- Add support to set company name.
+- Add support for log and tmp disks.
+- Add support for different passwords: application, database and operating system.
+
+* Thu May 3 2018 Ondra Machacek <omachace@redhat.com> - 1.1.8-1
+- Use no_log=true for uri module.
+
+* Tue Apr 10 2018 Ondra Machacek <omachace@redhat.com> - 1.1.7-1
+- Require Ansible 2.5.
+- Initialize CFME with default value.
+- Update defaults to use Gaprindashvili-2.
+
+* Thu Mar 1 2018 Ondra Machacek <omachace@redhat.com> - 1.1.6-1
+- Ensure VM is running before checking ManageIQ API.
+- Add variable for C&U Metrics Database Name.
+- Pass if provider already exists.
+- Verify API connectivity before fetching image.
+- Move to the Gaprindashvili release of ManageIQ.
+
+* Wed Jan 17 2018 Ondra Machacek <omachace@redhat.com> - 1.1.5-1
+- Support RHV credentials for Ansible Tower/AWX.
+
+* Tue Dec 12 2017 Ondra Machacek <omachace@redhat.com> - 1.1.4-1
+- Add missing templates/ directory.
+
+* Mon Dec 04 2017 Ondra Machacek <omachace@redhat.com> - 1.1.3-1
+- Add %pretrans scriplet to remove legacy role name.
+
+* Wed Nov 29 2017 Ondra Machacek <omachace@redhat.com> - 1.1.2-1
+- Rename prefix ovirt. to oVirt. to sync with galaxy
+
+* Thu Nov 16 2017 Ondra Machacek <omachace@redhat.com> - 1.1.0-1
+- Initial release

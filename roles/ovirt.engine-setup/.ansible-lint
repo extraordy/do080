@@ -1,0 +1,6 @@
+exclude_paths:
+  - /home/travis/build/oVirt/ovirt-ansible-engine-setup/tests/roles/
+parseable: true
+quiet: true
+use_default_rules: true
+verbosity: 1
