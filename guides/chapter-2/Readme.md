@@ -14,7 +14,7 @@ I registry più usati sono:
  
  - **Red Hat Quay**: Registry aperto al pubblico di Red Hat, in cui vi è però un minor controllo su ciò che viene caricato, anche se anche qui viene controllata la presenza o meno di alcuni bug con Clair.
  
- - **Docker Hub**: Registry gestito dalla Moby Inc., aperto al pubblico, senza alcun particolare controllor su ciò che viene caricato.
+ - **Docker Hub**: Registry gestito dalla Docker Inc., aperto al pubblico, senza alcun particolare controllo su ciò che viene caricato.
 
 ## Come interagire con un registry
 
@@ -22,11 +22,11 @@ Bene, ora vogliamo scaricare delle immagini per i nostri container. Come facciam
 
 ### Basic: Con un browser!
 
-Per cercare dall'interfaccia web ci basta usa un browser.
+Per cercare dall'interfaccia web ci basta usare un browser.
 
 Aprendo il nostro browser e aprendo il registry, ad esempio, di [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/explore) possiamo cercare una immagine che ci serve.
 
-Ad esempio, proviamo a cercare una immagine per httpd:
+Ad esempio, proviamo a cercare un'immagine per httpd:
 
 ![SearchImage](./images/SearchImage.png)
 
