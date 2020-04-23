@@ -24,7 +24,7 @@ Bene, ora vogliamo scaricare delle immagini per i nostri container. Come facciam
 
 Per cercare dall'interfaccia web ci basta usa un browser.
 
-Aprendo il nostro browser e aprendo il registry, ad esempio, di [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/explore) possiamo cercare una immagine che ci server.
+Aprendo il nostro browser e aprendo il registry, ad esempio, di [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/explore) possiamo cercare una immagine che ci serve.
 
 Ad esempio, proviamo a cercare una immagine per httpd:
 
