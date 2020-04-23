@@ -12,6 +12,7 @@ E' consigliato seguire le guide per l'installazione di CodeReady Containers per 
 
 - [Guida inscrizione gratuita a Red Hat Developer](guides/rhdev-subscribe/README.md)
 - [Guida installazione CodeReady Containers](guides/crc/README.md)
+- [Guida installazione Openshift Client - oc ](guides/oc/README.md)
 
 Nel caso non fosse possibile installare il software necessario per qualunque motivo, non preoccuparti. 
 Puoi seguire comunque le lezioni dei nostri istruttori. 
