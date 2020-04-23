@@ -111,7 +111,13 @@ Con questa direttiva stiamo proprio dicendo ad Openshift di:
 - Reperire l'immagine puntata dall'**imageStreamTag** referenziato
 - Utilizzare l'immagine reperita dall'**imageStreamTag** per buildare la il nostro codice
 
-Ovviamente gli imageStream ed i relativi imagestreamtag possono essere creati in maniera custom dall'utente, per definire in maniera esatta e persistente all'interno della nostra piattaforma una immagine particolare da utilizzare come base per il deploy della nostra applicazione.  
+Ovviamente gli imageStream ed i relativi imagestreamtag possono essere creati in maniera custom dall'utente, per definire in maniera esatta e persistente all'interno della nostra piattaforma una immagine particolare da utilizzare come base per il deploy della nostra applicazione.    
+
+Una caratteristica molto utile degli **imageStream** è che sono risorse monitorate, ossia un cambiamento al loro interno può dare vita ad azioni all'interno della piattaforma.  
+
+Nello specifico, ad esempio l'aggiornamento di una immagine di build puntata dal nostro imagestreamtag, può portare ad una nuova build di eventuali applicazioni compilate con quella immagine.  
+Analogamente, l'aggiornamento diretto di una immagine da cui ad esempio dipende una nostra applicazione o magari l'immagine stessa della nostra applicazione, può dare vita ad un re-deploy aggiornato della nostra applicazione, se nelle **DeploymentConfig** è specificato il trigger ImageChange, che vedremo tra poco.  
+
 
 ## Vantaggi del S2I
 E' inutile dire che utilizzare il source-to-image per costruire le nostre applicazioni rappresenta un boost non indifferente.  
@@ -178,8 +184,20 @@ Un esempio di deploymentconfig è:
     
     Events:	<none>
 
-Come possiamo vedere, abbiamo delle informazioni relative ai singoli **deploy** eseguiti per la nostra applicazione, lo stato dei nostri pod, le repliche desiderate e sopratutto quella che è la configurazione, relativa ad **Image**, **Volume**, **Port**, che andranno a definire effettivamente le caratteristiche all'interno del pod che ospiterà la nostra applicazione.
+Come possiamo vedere, abbiamo delle informazioni relative ai singoli **deploy** eseguiti per la nostra applicazione, lo stato dei nostri pod, le repliche desiderate e sopratutto quella che è la configurazione, relativa ad **Image**, **Volume**, **Port**, che andranno a definire effettivamente le caratteristiche all'interno del pod che ospiterà la nostra applicazione.  
+I comandi che possiamo utilizzare per andare a 'pilotare' un deploy sono:
 
+    oc rollout latest deploymentconfig/nomedc
+Con questo comando andiamo ad eseguire il deploy dell'ultima versione della nostra applicazione, nel caso in cui non siano state eseguite modifiche rispetto alla precedente, sarà di fatto un redeploy della stessa.
+
+    oc rollback deploymentconfig/nomedc
+
+In questo caso andremo a rieseguire il deploy della versione immediatamente precedente della nostra applicazione.  
+
+Inoltre, di default viene impostato un **trigger** sulla modifica della deploymentconfig, ovvero ad ogni modifica eseguita con:
+
+    oc edit deploymentconfig/nomedc
+Nel momento in cui andiamo a salvare le nostre modifiche, se vi sono cambiamenti il sistema andrà automaticamente ad allineare la piattaforma con le nuove modifiche, eseguendo un deploy dell'applicazione coerentemente con le nuove indicazioni.
 
 ## BuildConfig
 Una **buildConfig (bc)** è una risorsa analoga alle deploymentConfig, con la differenza che si ocucpa di gestire e determinare quello che è il processo di build della nostra applicazione.  
@@ -217,6 +235,10 @@ Per avere un'idea di ciò che possiamo avere all'interno di una buildConfig, and
     
     Events:	<none>
 
-Come possiamo vedere, abbiamo anche in questo caso uno storico delle build precedenti, la tipologia di strategy, nel nostro caso **Source** in quanto la nostra applicazione è stata creata a partire da un codice sorgente compilato in Golang ( riportato nella sezione **From Image:	ImageStreamTag openshift/golang:1.11.5**)  
+Come possiamo vedere, abbiamo anche in questo caso uno storico delle build precedenti, la tipologia di strategy, nel nostro caso **Source** in quanto la nostra applicazione è stata creata a partire da un codice sorgente compilato in Golang ( riportato nella sezione **From Image:	ImageStreamTag openshift/golang:1.11.5**)   
 
-
+Come accennato prima, abbiamo alcuni eventi che potrebbero scaturire una nuova build automatica delle nostre applicazioni, nello specifico:
+- Webhook Gitlab: endpoint creati da Openshift e che possiamo riportare nei nostri repository per notificare ad esempio ogni commit/push all'interno del nostro repository.
+- Webhook generici: endpoint creati da Openshift e che poissiamo chiamare, ad esempio con curl o Postman per far triggerare una nuova build
+- Il comando `oc start-build buildconfig/nomebc`
+- La modifica dell'iimageStream di build nel caso in cui sia definito un **TriggeredBy** di tipo **ImageChange**
