@@ -1,6 +1,6 @@
 # Breve storia dei containers
 
-L’idea di  isolare un processo è presente fin dal 1979 nel sistema operativo UNIX version 7 grazie all’adozione del chroot system. Nel corso degli anni sono state create molte soluzione per poter creare processi isolati e limitati, ma è circa nel 2008 che il linux kernel incomincia ad offrire due funzionalità fondamentali per la creazione di processi isolati e limitati: cgroups, namespaces, seccomp e SELinux. 
+L’idea di  isolare un processo è presente fin dal 1979 nel sistema operativo UNIX version 7 grazie all’adozione del chroot system. Nel corso degli anni sono state create molte soluzione per poter creare processi isolati e limitati, ma è circa nel 2008 che il linux kernel incomincia ad offrire funzionalità fondamentali per la creazione di processi isolati e limitati: cgroups, namespaces, seccomp e SELinux. 
 
 
 
@@ -49,27 +49,85 @@ Da un'immagine possiamo creare N container, esattamente come da una classe possi
 
 Oggi giorno abbiamo miglialia di immagini pronte all'uso archiviate in cataloghi (pubblici o privati) chiamati "Image Repository" o semplicemente "Registry"
 
-Alcuni esempi di image repository sono:
 
-- Red Hat Container Catalog
-- Red Hat Quay
-- Docker Hub
+# Registry
+
+Un registry è un catalogo di immagini.
+
+
+I registry più usati sono:
+
+ - **Red Hat Container Catalog**: Registry per i clienti Red Hat. Le immagini sono controllate e verificate da Red Hat.
+
+ 
+ - **Red Hat Quay**: Registry aperto al pubblico di Red Hat, in cui vi è però un minor controllo su ciò che viene caricato, anche se anche qui viene controllata la presenza o meno di alcuni bug con Clair.
+ 
+ - **Docker Hub**: Registry gestito dalla Docker Inc., aperto al pubblico, senza alcun particolare controllo su ciò che viene caricato.
+
 
 Sui repository pubblici come Docker Hub e Quay tutti gli utenti possono caricare le proprie immagini e scaricare immagini create da terze parti. 
 
 In ambito enterprise la provenienza delle immagini deve essere accertata e controllata, ecco perchè il repository Red Hat Container Catalog offre immagini controllate e verificate ai propri clienti.
 
-Ma come facciamo ad interagire con le immagini, con i container e con i registry? Abbiamo un'utility: podman
+## Come interagire con un registry
 
-Podman utilizza un formato delle immagini specificato dalla Open Container Initiative (OCI) che definisce uno standard di formato non proprietario e sviluppato dalla community.
+Bene, ora vogliamo scaricare delle immagini per i nostri container. Come facciamo?
 
-Quando scarichiamo delle immagini dai registry, queste vengono salvate nel file system locale. Podman inoltre non utilizza un architettura client/server (come per esempio Docker). Se utilizzate Docker siete pronti ad utilizzare Podman perchè i comandi sono (quasi) tutti uguali.
+### Basic: Con un browser!
+
+Per cercare dall'interfaccia web ci basta usare un browser.
+
+Aprendo il nostro browser e aprendo il registry, ad esempio, di [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/explore) possiamo cercare una immagine che ci serve.
+
+Ad esempio, proviamo a cercare un'immagine per httpd:
+
+![SearchImage](./images/SearchImage.png)
+
+Otteniamo così una lista delle immagini che corrispondono al criterio di ricerca:
+
+![ListImage](./images/ListImage.png)
+
+Selezionandone una, ad esempio `rhel8/httpd-24`, possiamo vederne una descrizione sotto la scheda *Overview*
+
+![OverviewImage](./images/OverviewImage.png)
+
+Nella scheda *Get This Image* possiamo vedere diversi modi di usare questa immagine:
+
+![GetImage](./images/GetImage.png)
+
+Tra cui anche quella da usare con podman:
+
+![PodmanImage](./images/PodmanImage.png)
+
+
+### Podman
+
+Podman è l'utility permette l'interazione con i registry. Utilizza un formato delle immagini specificato dalla Open Container Initiative (OCI) che definisce uno standard di formato non proprietario e sviluppato dalla community.
 
 Installare podman è veramente semplice, come installare un qualsiasi pacchetto:
 
 ```sudo yum install podman```
 
-Qui di seguito uno schema che racchiude le relazioni fra registry, immagini e containers
+**N.B.** Nel caso di registry con autenticazione, dobbiamo fornire le credenziali fornire le credenziali:
+
+```bash
+# Login ad un registry
+$ podman login registry.redhat.io
+Username: [redhat_username]
+Password: [redhat_password]
+```
+
+Possiamo poi cercare i container con i seguenti comandi:
+
+```bash
+# Ricerca tra tutti i registry configurati
+$ podman search httpd
+```
+
+```bash
+# Ricerca in un registry specifico
+$ podman search registry.redhat.io/httpd
+
 
 
 
