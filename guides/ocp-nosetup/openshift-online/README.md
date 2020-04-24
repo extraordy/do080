@@ -1,6 +1,6 @@
 # Creazione di un cluster temporaneo - 60 giorni di prova
 Tra le diverse opzioni per iniziare a mettere le nostre mani sulla tecnologia Openshift, c'è anche la possibilità di creare un cluster temporaneo minimale direttamente sulla piattaforma Red Hat.  
-Per fare questo è semplicissimo, sarà sufficiente avere un account Red Hat (scopri come crearlo seguendo questa guida).  
+Per fare questo è semplicissimo, sarà sufficiente avere un account Red Hat (scopri come crearlo seguendo [questa guida](../../../guides/rhdev-subscribe/README.md)).  
 
 Innanzitutto, collegatevi all'indirizzo [https://manage.openshift.com/register/plan](https://manage.openshift.com/register/plan)
 
