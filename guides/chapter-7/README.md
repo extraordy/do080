@@ -242,3 +242,21 @@ Come accennato prima, abbiamo alcuni eventi che potrebbero scaturire una nuova b
 - Webhook generici: endpoint creati da Openshift e che poissiamo chiamare, ad esempio con curl o Postman per far triggerare una nuova build
 - Il comando `oc start-build buildconfig/nomebc`
 - La modifica dell'iimageStream di build nel caso in cui sia definito un **TriggeredBy** di tipo **ImageChange**
+
+## Un piccolo esempio
+
+Per dare esmpio di quanto siano comodo e semplice usare il meccanismo di build s2i, possiamo eseguire una rapida build di un'applicazione GraalVM su Openshift eseguendo i comandi sottostanti:
+
+```bash
+# Facciamo il build della nostra immagine in Openshift
+$ oc new-app quay.io/quarkus/ubi-quarkus-native-s2i:19.3.1-java11~https://github.com/quarkusio/quarkus-quickstarts.git --context-dir=getting-started --name=quarkus-quickstart-native
+$ oc logs -f bc/quarkus-quickstart-native
+
+# Creiamo la route per esporre il servizio
+oc expose svc/quarkus-quickstart-native
+
+# Testiamo con curl il corretto funzionamento
+export URL="http://$(oc get route | grep quarkus-quickstart-native | awk '{print $2}')"
+echo $URL
+curl $URL/hello/greeting/quarkus
+```
