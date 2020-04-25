@@ -59,7 +59,7 @@ Contengono informazioni utilizzabili da altre risorse
 
 Openshift aggiunge delle risorse fra le quali:
 
-#Deployment Config
+## Deployment Config
 
 Contiene le informazioni su come effettuare il deploy della nostra applicazione. Per esempio:
 
@@ -68,7 +68,7 @@ Contiene le informazioni su come effettuare il deploy della nostra applicazione.
 - variabili d'ambiente
 
 
-#Build Config
+## Build Config
 
 Definisce le informazioni per creare la nostra applicazione: Per esempio:
 
@@ -76,7 +76,7 @@ Definisce le informazioni per creare la nostra applicazione: Per esempio:
 - variabili d'ambiente da utilizzare nel solo processo di build
 - strategia di build
 
-#Routes
+## Routes
 
 Permettono di esporre le applicazioni HTTP based
 
@@ -85,6 +85,23 @@ Ecco un esempio di architettura Openshift
 
 ![GetImage](./images/openshift.png)
 
+## Novità in Openshift 4
+
+- CoreOS
+- Semplicità di installazione
+- Operators
+
+
+Per interagire con Openshift da linea di comando possiamo utilizzare l'utility 'oc'
+
+Nella dimostrazione verrà creata un'applicazione di esempio in openshift utilizzando anche le variabili di ambiente
+
+- oc new-app
+- oc get
+- oc describe
+- oc export
+- oc create
+- oc exec 
 
 
 
