@@ -21,9 +21,6 @@ Molto spesso la risorsa Pod contiene un solo container. Per questo corso introdu
 
 ## Nodes
 
-
-
-
 In un cluster Kubernetes abbiamo nodi dedicati chiamati "master" che offrono fra l'altro queste funzionalità:
 
 - autenticazione
@@ -33,6 +30,9 @@ In un cluster Kubernetes abbiamo nodi dedicati chiamati "master" che offrono fra
 etc..
 
 i nodi chiamati "workers" sono i nodi dove effettivamente i containers dei Pod vengono eseguiti
+
+#Esempio di risorse fondamentali di Kubernetes
+
 
 ## Services
 
@@ -49,6 +49,47 @@ Definisce lo storage persistente utilizzabile dai Pod
 ## Persistent Volume Claims
 
 Rappresenta la richiesta di storage da parte dei Pod
+
+## ConfigMaps e Secrets
+
+Contengono informazioni utilizzabili da altre risorse
+
+
+#Esempio di risorse fondamentali di Kubernetes
+
+Openshift aggiunge delle risorse fra le quali:
+
+#Deployment Config
+
+Contiene le informazioni su come effettuare il deploy della nostra applicazione. Per esempio:
+
+- numero di repliche
+- richiesta di storage
+- variabili d'ambiente
+
+
+#Build Config
+
+Definisce le informazioni per creare la nostra applicazione: Per esempio:
+
+- url del codice sorgente (es repo git)
+- variabili d'ambiente da utilizzare nel solo processo di build
+- strategia di build
+
+#Routes
+
+Permettono di esporre le applicazioni HTTP based
+
+
+Ecco un esempio di architettura Openshift
+
+![GetImage](./images/openshift.png)
+
+
+
+
+
+
 
 
 
