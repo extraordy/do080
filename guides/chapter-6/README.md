@@ -1,4 +1,4 @@
-#Introduzione a Openshift
+# Introduzione a Openshift
 
 Le nozioni apprese fino ad ora permettono di creare dei container sulla nostra workstation/server: ma come possiamo garantire la funzionalità della nostra applicazione se il singolo server smettesse di funzionare? 
 
@@ -10,7 +10,7 @@ Openshift è la distribuzione Red Hat di Kubernetes per ambiti enterprise. Opens
 
 Questa è un'overview dell'architettura di Openshift
 
-![GetImage](./images/OCP4_Architecture-1.webp)
+![GetImage](./images/OCP4_Architecture-1.png)
 
 ## Pod
 
@@ -31,7 +31,7 @@ etc..
 
 i nodi chiamati "workers" sono i nodi dove effettivamente i containers dei Pod vengono eseguiti
 
-#Esempio di risorse fondamentali di Kubernetes
+# Esempio di risorse fondamentali di Kubernetes
 
 
 ## Services
@@ -55,7 +55,7 @@ Rappresenta la richiesta di storage da parte dei Pod
 Contengono informazioni utilizzabili da altre risorse
 
 
-#Esempio di risorse fondamentali di Kubernetes
+# Esempio di risorse fondamentali di Kubernetes
 
 Openshift aggiunge delle risorse fra le quali:
 
