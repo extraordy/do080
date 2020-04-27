@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Copying logos in webserver folder..."
+cp /tmp/src/logo* /opt/app-root/src/
+/usr/libexec/s2i/assemble
