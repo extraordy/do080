@@ -10,7 +10,7 @@ By EXTRAORDY - La formazione ufficiale Red Hat
 
 Per poter provare i comandi del corso, ti suggeriamo di installare podman su Linux o podman-machine se hai un sistema Windows o Mac OS. Se hai dubbi su come procedere durante l'installazione puoi consultare la seguente guida.
 
-- [Guida all'installazione di CodeReady Containers](guides/podman/README.md)
+- [Guida all'installazione di Podman](guides/podman/README.md)
 
 Ti consigliamo inoltre l'installazione di CodeReady Containers per avere a disposizione un cluster Openshift minimale, di seguito il link con requisiti minimi di sistema e la procedura.
 
