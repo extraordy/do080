@@ -6,25 +6,27 @@
     
 -   Enfatizzare i problemi che si vanno a risolvere con un approccio a container (librerie condivise, footprint di risorse, segregazione)
     
--   Enfatizzare il fatto che è possibile portare in maniera semplice da un ambiente all’altro un’applicazione containerizzata, grazie al disaccoppiamento con l’host.
+-   Enfatizzare come sia possibile portare in maniera semplice da un ambiente all’altro un’applicazione containerizzata, grazie al disaccoppiamento con l’host.
     
--   Slide con differenze tra approccio tradizionale e approccio container
+-   Differenze tra approccio tradizionale e approccio container
     
 
 # Cap.2 - Overview of Container Architecture
 
--   Descrizione dei container, con un piccolo accenno alla gestione in kernel space dei namespace, cgroups, SECCOMP, SELinux.
+-   Descrizione dei container, con un accenno alla gestione in kernel space dei namespace, cgroups, SECCOMP, SELinux.
     
 -   Legenda dei termini utilizzati, container, immagini, repository
+
 -   Cenni su Red Hat Container Catalog, Quay, Docker Hub
--   Introduzione a Podman, OCI, differenza con docker
+
+-   Introduzione a Podman, OCI, differenze con Docker
     
--   Enfatizzare che Podman interagisce con i registry, immagini e containers
+-   Descrizione dell'interazione di Podman con i registry, immagini e containers
     
     
 # Cap.3 - Overview of Kubernetes and Openshift
 
--   Spiegare i problemi di gestione manuale dei containers
+-   I limiti della gestione manuale dei containers
     
 -   Perchè è necessario un orchestratore
     
@@ -32,9 +34,9 @@
     
 -   Reagire tempestivamente in caso di errori (health checks)
     
--   Accennare a Blu/Green deployment e A/B testing
+-   Descrizione delle strategie di deploy (Blu/Green deployment, Rolling Update, scenari per A/B testing)
     
--   Kubernetes (Orchestration, Scheduling e Isolation)
+-   Kubernetes (Orchestration, Scheduling & Isolation)
     
 -   Accenno agli Operators
     
@@ -43,26 +45,26 @@
 
 # Cap.4 - Provisioning a Containerized Database Server
 
--   Dimostrazione con podman (search, pull)
+-   Gestione delle immagini con podman (search, pull)
     
 -   Sintassi del nome delle immagini
     
--   Podman run, Entrypoint, -d, -it, -e
+-   Podman run, Entrypoint, ed opzioni di esecuzione (-d, -it, -e)
     
--   Dimostrazione mysql container (exec -it)
+-   Dimostrazione di una messa in opera di un mysql containerizzato (exec -it)
     
--   Aggiunta una piccola parentesi per come elencare le immagini già pullate e come stoppare/rimuovere un container
+-   Visualizzazione e gestione di immagini e container già presenti
     
 
 # Cap.5 - Building Custom Container Images with Dockerfiles
 
-  
-
 -   Breve introduzione ai Dockerfile
+
+-   Le direttive più utilizzate
     
--   Enfasi sula differenza tra COPY e ADD
+-   La differenza tra COPY e ADD
     
--   CMD e ENTRYPOINT
+-   La differenza tra CMD e ENTRYPOINT
     
 -   Layers
     
@@ -70,47 +72,39 @@
     
 -   Dimostrazione creazione Dockerfile
     
--   Portforward
+-   Abilitare il port-forwarding in fase di esecuzione di un container
     
 
 # Cap.6 - Creating Basic Kubernetes and Openshift Resources
-
-  
 
 -   Introduzione ai Pod
     
 -   Nodi master, worker, infra
     
--   Services, PV, PVC,CM, Secrets,
+-   Services, PersistentVolume, PersistentVolumeClaim, ConfigMaps, Secrets.
     
--   Openshift resources (DC, BC, Routes)
+-   Openshift resources (DeploymentConfig, BuildConfig, Routes)
     
 -   CoreOS
     
 -   Operators
     
--   Oc utility
+-   Openshift CLI - oc
     
--   New-app, get, describe, delete, exec, export, create, edit
+-   Descrizione dei comandi più utilizzati (New-app, get, describe, delete, exec, export, create, edit...)
     
--   Dimostrazione con oc (creazione project e applicazione)
+-   Dimostrazione di creazione project e applicazione da command line
     
-
-  
-
 # Cap.7 - Creating Applications with the Source-to-Image Facility
 
   
-
 -   Spiegazione del processo S2I
     
--   Enfatizzare che i developer non devono per forza sapere come funziona openshift
+-   Benefit: Velocità di compilazione, efficienza in termini di utilizzo delle risorse, possibilità di integrare pipeline di CI/CD e patching delle applicazioni
     
--   Benefit: patching, speed, efficient
+-   Image Streams, breve accenno a come gestire aggiornamenti delle applicazioni a partire dall’aggiornamento di una immagine monitorata dall'ImageStream
     
--   Image Streams, breve accenno a come gestire aggiornamenti delle app a partire dall’aggiornamento di una immagine monitorata dall ’imagestream
-    
--   BuildConfig VS DeploymentConfig - Rollout automatici e trigger sulla base di rebuild del codice
+-   BuildConfig VS DeploymentConfig - Rollout automatici, build automatiche grazie ai trigger
     
 -   Dimostrazione S2I con:
     
@@ -118,46 +112,32 @@
         
     -   Esposizione service + route
         
-    -   Modifica codice su git - push
+    -   Modifica codice su git
         
-    -   oc start-build
+    -   Rebuild dell'applicazione
     
-
-  
-  
-
 # Cap.8 - Creating Routes
 
-  
-
--   Esposizione dei servizi
-    
 -   Visualizzazione configurazione delle routes
     
--   AGGIUNTA: Limiti delle rotte, traffico L7 http/https/websocket (SI!)
+-   Limiti delle rotte, traffico L7 http/https/websocket
     
--   AGGIUNTA: Cenno all’esistenza di servizi NodePort per l’esposizione di servizi non http/https
+-   Accenno ai servizi di tipo NodePort per l’esposizione di servizi non http/https
     
--   oc expose
+-   Come esporre un servizio da linea di comando (oc expose=
     
--   Come il nome dell’url viene creata di default e come personalizzarla con --hostname
+-   URL delle rotte: come vengono create di default e come personalizzarle
     
--   BONUS: Spiegare perché le rotte hanno un ‘pattern’ di default .apps.dominio e dove ‘si sceglie’
+-   La application wildcard, cos'è e perchè è importante.
     
--   Dimostrazione creazione route, evitando di usare php-helloworld
+-   Dimostrazione creazione route
     
-
-  
-  
-
 # Cap.9 - Creating Applications with the Openshift Web Console
-
-  
 
 -   Come accedere alla web console
     
 -   Funzionalità della web console
     
--   Enfatizzare che gran parte dei task amministrativi e di gestione delle applicazioni possono essere eseguite da web console, senza necessariamente conoscere i comandi o saper
+-   Overview delle funzioni, amministrative, di gestione e prettamente legate allo sviluppo, utilizzabili in maniera semplice ed immediata direttamente da web console. 
     
 -   Creare un’applicazione da web console
