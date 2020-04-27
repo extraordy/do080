@@ -245,18 +245,26 @@ Come accennato prima, abbiamo alcuni eventi che potrebbero scaturire una nuova b
 
 ## Un piccolo esempio
 
-Per dare esmpio di quanto siano comodo e semplice usare il meccanismo di build s2i, possiamo eseguire una rapida build di un'applicazione GraalVM su Openshift eseguendo i comandi sottostanti:
+Possiamo vedere quanto sia semplice usare il meccanismo di build s2i utilizzando come esempio una semplice applicazione in Flask. 
+Ci basterà infatti eseguire:
 
 ```bash
-# Facciamo il build della nostra immagine in Openshift
+$ oc new-app https://github.com/elroncio/simple_app
+```
+Per esporre l'applicazione che verrà creata possiamo eseguire il comando:
+
+```bash
+$ oc expose svc/simpleapp
+$ oc get route  # Questo per vedere l'url che è stato generato
+```
+Se dovessimo fare la build di una applicazione per cui non viene riconosciuto automaticamente il linguaggio (e.g. go) o per cui ci server specificare l'immagine builder, possiamo anteporre all'url del nostro repository l'immagine di build che vogliamo utilizzare.
+
+Questo procedimento lo possiamo vedere in questo esempio di build di una applicazione fatta con GraalVM:
+
+```bash
+# Utilizziamo l'immagine di build quay.io/quarkus/ubi-quarkus-native-s2i:19.3.1-java11
 $ oc new-app quay.io/quarkus/ubi-quarkus-native-s2i:19.3.1-java11~https://github.com/quarkusio/quarkus-quickstarts.git --context-dir=getting-started --name=quarkus-quickstart-native
-$ oc logs -f bc/quarkus-quickstart-native
-
-# Creiamo la route per esporre il servizio
-oc expose svc/quarkus-quickstart-native
-
-# Testiamo con curl il corretto funzionamento
-export URL="http://$(oc get route | grep quarkus-quickstart-native | awk '{print $2}')"
-echo $URL
-curl $URL/hello/greeting/quarkus
+$ oc expose svc/quarkus-quickstart-native
+$ oc get route
+curl URL_ESPOSTO/hello/greeting/quarkus
 ```
