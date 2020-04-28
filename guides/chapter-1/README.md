@@ -31,6 +31,9 @@ Come gestisco le patch di sicurezza di tutti i sistemi operativi delle VM? In ca
 Questi sono alcuni dei problemi che i linux container risolvono.
 
 
+![GetImage](./images/Container_Virtual_Machine@2x.png)
+
+
 # Utilizzo dei linux container per il deployment applicativo
 
 I linux container sono dei processi linux in grado di accogliere le nostre applicazioni.
