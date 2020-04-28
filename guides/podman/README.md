@@ -8,11 +8,15 @@
 
 ### Fedora, CentOS 8, RHEL 8
 
-Sulle distribuzioni Fedora, CentOS 8 e Red Hat Enterprise Linux 8, Podman è già preinstallato!
-
-Puoi verificarne il funzionamento con il comando `podman version`
+Sulle distribuzioni Fedora, CentOS 8 e Red Hat Enterprise Linux 8, Podman è già preinstallato nella maggior parte dei casi, ma si può verificarne la presenza con il comando `podman version`
 
 ![Comando podman version](linux-pm.png)
+
+in caso di errore, sarà sufficiente installare il pacchetto mediante il comando:
+
+```shell
+yum -y install podman
+```
 
 ### Ubuntu 18.04, 19.04, 19.10
 
