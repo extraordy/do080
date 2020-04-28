@@ -53,7 +53,7 @@ Possiamo verificare facilmente, con una ricerca, che in effetti sono proprio i r
 Possiamo prelevare una immagine particolare andando a specificarla nel comando '**podman pull**'.
 In questo modo, l'immagine sarà prelevata e salvata all'interno della directory 
 
-    [student@workstation ~]$ podman docker.io/library/httpd 
+    [student@workstation ~]$ podman pull docker.io/library/httpd 
     Trying to pull docker.io/library/httpd...
     Getting image source signatures
     Copying blob 6faf90d050b2 done  
