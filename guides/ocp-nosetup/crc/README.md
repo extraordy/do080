@@ -33,7 +33,12 @@ I requisiti di sistema, invece, sono i seguenti:
 
 # Installazione
 
-In questa sezione andremo a coprire l'installazione della piattaforma in ambiente Linux, Windows e Mac.
+In questa sezione andremo a coprire l'installazione della piattaforma in ambiente Linux, Windows e Mac. 
+
+Durante l'installazione, sarà richiesta una chiave (Pull Secret), che servirà per il download di contenuti dai registry Red Hat per l'utilizzo del nostro cluster.
+
+Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, previo login con utenza Red Hat Developer, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
+![](images/pull-secret.png)
 
 ## Installazione su Windows
 
@@ -80,9 +85,6 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
     ? Image pull secret [? for help] 
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
-
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
-![](images/pull-secret.png)
 
 Una volta inserita, l'installazione proseguirà:
 
@@ -181,9 +183,6 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
 
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
-![](images/pull-secret.png)
-
 Il resto del processo è qualcosa di simile, al termine dell'installazione viene generata una password per l'utente developer (pass: developer) e l'utente amministratore **kubeadmin** che dovrete salvare per poter accedere al vostro cluster!
 
     INFO Loading bundle: crc_libvirt_4.3.8.crcbundle ... 
@@ -268,9 +267,6 @@ Una volta terminata la fase di setup, è possibile avviare la predisposizione de
     ? Image pull secret [? for help]
 
 A questo punto, l'installer ci sta chiedendo di inserire una chiave (Pull Secret) che occorre inserire per il download delle immagini necessarie.
-
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line.  
-![](images/pull-secret.png)
 
 Il resto del processo è qualcosa di simile, al termine dell'installazione viene generata una password per l'utente developer (pass: developer) e l'utente amministratore **kubeadmin** che dovrete salvare per poter accedere al vostro cluster!
 
