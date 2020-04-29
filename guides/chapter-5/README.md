@@ -33,7 +33,7 @@ Ora abbiamo un Dockerfile di esempio, ma vediamo nello specifico alcune delle di
 
 **FROM** immagine[:tag]
 
-L'ingrediente base della vostra immagine, immaginatelo come un impasto per pizza. È qui che inizia tutta la magia, l'immagine base, di solito immagini linux minimali con le funzioni di base per eseguire una shell e alcuni comandi, come i package manager, ecc. 
+L'ingrediente base della vostra immagine: pensate ad un impasto per la pizza. È qui che inizia tutta la magia, l'immagine base, di solito immagini linux minimali con le funzioni di base per eseguire una shell e alcuni comandi, come i package manager, ecc. 
 Il tag è un parametro opzionale, assumerà di default "**latest**", ma se avete bisogno di una versione specifica potete usare un tag come ad esemio "**1.1**" "**v1.1**" "**test_v1**"
 
 **COPY** sorgente destinazione
@@ -47,7 +47,7 @@ Usato per specificare un utente specifico con cui verranno eseguiti i comandi su
 
 **WORKDIR** path
 
-Imposta la directory di lavoro in cui il contenitore partirà. Se non specificato attraverso path assoluti, questa sarà la directory di base dal quale verranno eseguite le istruzioni RUN, CMD, ENTRYPOINT, COPY e ADD.
+Imposta la directory di lavoro in cui il container partirà. Se non specificato attraverso path assoluti, questa sarà la directory di base dal quale verranno eseguite le istruzioni RUN, CMD, ENTRYPOINT, COPY e ADD.
 
 **ADD** sorgente destinazione
 
@@ -65,19 +65,20 @@ Inoltre, le variabili d'ambiente, una volta definite, possono essere riutilizzat
 
 **EXPOSE** porta
 
-Con la direttiva EXPOSE si **dichiara** quali sono i porti con cui il container funzionerà.  
+Con la direttiva EXPOSE si **dichiara** quali sono le porte che il container utilizzerà.  
 Attenzione, questa direttiva non espone la porta fisicamente, è puramente indicativa. Possiamo utilizzare questa informazione in fase di avvio del container, per mappare ad esempio la porta indicata su una porta dell'host mediante **port-forwarding** (opzione -p host_port:container_port in podman run) 
 
 **ENTRYPOINT** ["command", "parameter1", ...]/**CMD** ["command", "parameter1", ... ]
 
-Sono usati per indicare un comando/script da eseguire non appena il contenitore viene eseguito con '**podman run'**.
+Sono usati per indicare un comando/script da eseguire non appena il container viene eseguito con '**podman run'**.
 
 E' assai frequente vedere nella direttiva ENTRYPOINT il comando da eseguire e separatamente nella direttiva CMD i parametri del comando che andiamo a lanciare.
 Possiamo, in fase di start del container, fare un override in un solo caso, ossia quando il comando iniziale sia definito all'interno della direttiva **CMD** semplicemente passando, come abbiamo visto, il comando che desideriamo lanciare in fase di 'run' del nostro container.
 
 **Come creare la nostra prima immagine**
 
-Riprendiamo un attimo il nostro Dockerfile:
+Riprendiamo un attimo il nostro Dockerfile:  
+
     FROM ubi8
     LABEL description="Creating a custom httpd image"
     MAINTAINER Alessandro Rossi <arossi@extraordy.com>
