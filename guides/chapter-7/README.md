@@ -10,8 +10,7 @@ Andiamo a vedere nello specifico di cosa stiamo parlando!
 
 Il concetto alla base del processo **S2I** è semplice ma allo stesso tempo nasconde un meccanismo molto elaborato.
 
-Immagine processo
-
+![](./images/s2i.png)
 
 Come possiamo vedere, la funzionalità di per sé ci permette, a partire da una base di codice, reperita da un repository Git ad esempio, di poter andare a buildare e successivamente deployare in modo semplice ed immediato, la nostra applicazione, rendendola di fatto immediatamente fruibile.
 
@@ -23,7 +22,7 @@ Dietro questa semplice direttiva, in realtà c'è un mondo assai più complesso.
 - Un repository Git 
 - Il nome di una immagine
 - Le coordinate di una immagine in particolare, nel formato visto in precedenza "registry/utente/nomeimmagine"
-- *La combinazione "imageStream~repositroryGit*
+- La combinazione "imageStream~repositroryGit
 
 Sull'ultima casistica ci soffermeremo tra un attimo, andiamo intanto a capire perché ciò è necessario.
   
