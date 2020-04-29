@@ -55,7 +55,7 @@ Rappresenta la richiesta di storage da parte dei Pod
 Contengono informazioni utilizzabili da altre risorse
 
 
-# Esempio di risorse fondamentali di Kubernetes
+# Esempio di risorse fondamentali aggiunte da Openshift
 
 Openshift aggiunge delle risorse fra le quali:
 
