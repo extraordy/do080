@@ -31,6 +31,9 @@ Un orchestratore permette di impostare limiti alle risorse di un singolo contain
 all'interno di un progetto tramite quote. In questo modo è possibile ottimizzare la capacità computazionale 
 dell'hardware a disposizione.
 
+#### *Autoscaling su due nodi, da 2 a 4 Pod, caso di fallimento di un Pod e fallimento di un intero nodo*
+![autoscaling](images/autoscaling.png)
+
 ## Health check, reagire tempestivamente agli errori
 
 Tra le funzionalità che un orchestratore implementa, c'è la possibilità di progettare dei controlli per la fase di 
