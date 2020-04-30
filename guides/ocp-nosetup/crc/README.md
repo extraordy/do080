@@ -1,6 +1,6 @@
 # CodeReady Containers - Un cluster all in one!
 
-CRC, CodeReady Containers, è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster Openshift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installaizone vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
+CRC, CodeReady Containers, è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster Openshift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installazione vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
 Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a disposizione un ambiente funzionante, disponibile e pronto all'installazione su qualsiasi sistema operativo supportato finora.
 
 Per maggiori informazioni o per la risoluzione dei problemi più comuni, il link di riferimento è:  
