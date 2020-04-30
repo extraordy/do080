@@ -52,11 +52,11 @@ Per andarlo ad eseguire, apriamo il prompt dei comandi:
 
 Spostiamoci nella directory dove abbiamo estratto il nostro file, nel mio caso nella directory "Downloads\crc-windows-amd64\crc-windows-1.8.0-amd64":
 
-`cd "Downloads\crc-windows-amd64\crc-windows-1.8.0-amd64"`
+`cd "Downloads\crc-windows-amd64\crc-windows-1.9.0-amd64"`
 
 Per inizializzare la macchina virtuale, è necessario utilizzare il comando 'crc setup'
 
-    C:\Users\alex\Downloads\crc-windows-amd64\crc-windows-1.8.0-amd64>crc setup
+    C:\Users\alex\Downloads\crc-windows-amd64\crc-windows-1.9.0-amd64>crc setup
     INFO Checking if oc binary is cached
     INFO Checking if podman remote binary is cached
     INFO Checking if CRC bundle is cached in '$HOME/.crc'
@@ -72,7 +72,7 @@ Per inizializzare la macchina virtuale, è necessario utilizzare il comando 'crc
 
 Una volta terminata la fase di setup, è possibile avviare la predisposizione della macchina virtuale che servirà il nostro cluster Openshift!
 
-    C:\Users\alex\Downloads\crc-windows-amd64\crc-windows-1.8.0-amd64>crc start
+    C:\Users\alex\Downloads\crc-windows-amd64\crc-windows-1.9.0-amd64>crc start
     INFO Checking if oc binary is cached
     INFO Checking if podman remote binary is cached
     INFO Checking if running as normal user
@@ -129,15 +129,15 @@ L'installazione è veramente semplice, in quanto l'installer si presenta come un
 Una volta eseguito il download, ci ritroveremo con un file da estrarre, che andremo a scompattare:
 
     [alex@pollos Scaricati]$ tar -xvf crc-linux-amd64.tar.xz 
-	crc-linux-1.8.0-amd64/
-	crc-linux-1.8.0-amd64/LICENSE
-	crc-linux-1.8.0-amd64/doc.pdf
-	crc-linux-1.8.0-amd64/crc
-	[alex@pollos Scaricati]$ cd crc-linux-1.8.0-amd64/
+	crc-linux-1.9.0-amd64/
+	crc-linux-1.9.0-amd64/LICENSE
+	crc-linux-1.9.0-amd64/doc.pdf
+	crc-linux-1.9.0-amd64/crc
+	[alex@pollos Scaricati]$ cd crc-linux-1.9.0-amd64/
 
 Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc per installare la nostra VM:
 
-    [alex@pollos crc-linux-1.8.0-amd64]$ ./crc setup
+    [alex@pollos crc-linux-1.9.0-amd64]$ ./crc setup
 	INFO Checking if oc binary is cached              
 	INFO Checking if CRC bundle is cached in '$HOME/.crc' 
 	INFO Unpacking bundle from the CRC binary         
@@ -161,7 +161,7 @@ Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc 
 
 Una volta terminata la fase di setup, è possibile avviare la predisposizione della macchina virtuale che servirà il nostro cluster Openshift!
 
-    [alex@pollos crc-linux-1.8.0-amd64]$ ./crc start
+    [alex@pollos crc-linux-1.9.0-amd64]$ ./crc start
     INFO Checking if oc binary is cached              
     INFO Checking if podman remote binary is cached   
     INFO Checking if running as non-root              
@@ -213,9 +213,9 @@ All'interno della directory, sarà estratto il file crc che andremo ad utilizzar
 
 Per andarlo ad eseguire, apriamo il prompt dei comandi e spostiamoci nella directory dove abbiamo estratto il nostro file, nel mio caso nella directory: 
 
-    alessandro@MBPdiAlessandro ~ % cd Downloads/crc-macos-1.8.0-amd64/ 
-    alessandro@MBPdiAlessandro crc-macos-1.8.0-amd64 % pwd 
-    Users/alessandro/Downloads/crc-macos-1.8.0-amd64
+    alessandro@MBPdiAlessandro ~ % cd Downloads/crc-macos-1.9.0-amd64/ 
+    alessandro@MBPdiAlessandro crc-macos-1.9.0-amd64 % pwd 
+    Users/alessandro/Downloads/crc-macos-1.9.0-amd64
 
 **ATTENZIONE!** 
 Potrebbe essere necessario autorizzare l'secuzione del programma **crc**, che sebbene sia affidabile, potrebbe essere bloccato.
@@ -228,7 +228,7 @@ https://support.apple.com/it-ch/guide/mac-help/mh43185/mac
 
 Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc per installare la nostra VM:
 
-    alessandro@MBPdiAlessandro crc-macos-1.8.0-amd64 % ./crc setup
+    alessandro@MBPdiAlessandro crc-macos-1.9.0-amd64 % ./crc setup
     INFO Checking if oc binary is cached              
     INFO Caching oc binary                            
     INFO Checking if podman remote binary is cached   
@@ -256,7 +256,7 @@ Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc 
 
 Una volta terminata la fase di setup, è possibile avviare la predisposizione della macchina virtuale che servirà il nostro cluster Openshift!
 
-    alessandro@MBPdiAlessandro crc-macos-1.8.0-amd64 % ./crc start
+    alessandro@MBPdiAlessandro crc-macos-1.9.0-amd64 % ./crc start
     INFO Checking if oc binary is cached              
     INFO Checking if podman remote binary is cached   
     INFO Checking if running as non-root              
@@ -327,7 +327,7 @@ Una volta eseguito, potrete effettuare il login via command-line utilizzando il 
 
 Inserendo la password, **developer**, generata in fase di start!
 
-    [alex@pollos crc-linux-1.8.0-amd64]$ oc login -u developer https://api.crc.testing:6443
+    [alex@pollos crc-linux-1.9.0-amd64]$ oc login -u developer https://api.crc.testing:6443
     The server uses a certificate signed by an unknown authority.
     You can bypass the certificate check, but any data you send to the server could be intercepted by others.
     Use insecure connections? (y/n): y
