@@ -3,8 +3,7 @@
 Un ottimo modo per iniziare, senza necessità di registrarsi, si va a sfruttare un ambiente sandbox con un mini cluster openshift provisionato automaticamente dove sarà possibile iniziare da subito ad eseguire i primi comandi e muovere i primi passi sulla **command line di Openshift**.
 Il playground è basato su KataCoda Containers, e permette di utilizzare ambienti di diverso tipo direttamente all'interno del nostro browser.
 
-Per accedervi, è sufficiente collegarsi al link che segue:
-https://learn.openshift.com/playgrounds/openshift45/
+Per accedervi, è sufficiente collegarsi al link https://learn.openshift.com/playgrounds/ e scegliere la versione di OpenShift desiderata.
 
 Una volta aperto il link, atterreremo sulla pagina iniziale, dove ci viene descritto il contenuto dello "**Scenario**" e veniamo informati che l'ambiente rimarrà attivo per un'ora, prima di essere distrutto.  
 Per iniziare basta cliccare su "Start Scenario":
