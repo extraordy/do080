@@ -4,7 +4,7 @@ Un ottimo modo per iniziare, senza necessità di registrarsi, si va a sfruttare 
 Il playground è basato su KataCoda Containers, e permette di utilizzare ambienti di diverso tipo direttamente all'interno del nostro browser.
 
 Per accedervi, è sufficiente collegarsi al link che segue:
-https://www.openshift.com/learn/courses/playground/
+https://learn.openshift.com/playgrounds/openshift45/
 
 Una volta aperto il link, atterreremo sulla pagina iniziale, dove ci viene descritto il contenuto dello "**Scenario**" e veniamo informati che l'ambiente rimarrà attivo per un'ora, prima di essere distrutto.  
 Per iniziare basta cliccare su "Start Scenario":
