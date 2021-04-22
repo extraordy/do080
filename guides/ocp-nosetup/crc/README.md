@@ -4,7 +4,7 @@ CRC, CodeReady Containers, è un progetto che ci permette di andare ad installar
 Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a disposizione un ambiente funzionante, disponibile e pronto all'installazione su qualsiasi sistema operativo supportato finora.
 
 Per maggiori informazioni o per la risoluzione dei problemi più comuni, il link di riferimento è:  
-https://cloud.redhat.com/openshift/install/crc/installer-provisioned
+https://cloud.redhat.com/openshift/create/local
 
 ## Download link:
 
@@ -21,15 +21,15 @@ https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd
 
 |  Sistema Operativo | Versione supportata  |
 | :------------ | :------------ |
-| Windows  | Windows 10 Home/Professional Fall Creators Update (version 1709)  |
-| Mac | macOS 10.12 Sierra o successivi  |
-| Linux  | Red Hat Enterprise Linux/CentOS 7.5 o successivi </br> Fedora 30 e successivi </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo |
+| Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva |
+| Mac | macOS, versione 10.14 Mojave o successiva |
+| Linux  | Red Hat Enterprise Linux/CentOS 7.5 o successivi </br> le ultime due release stabili di Fedora </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo |
 
 I requisiti di sistema, invece, sono i seguenti:
 
 - 4 virtual CPU (vCPU)
-- 8GB di memoria
-- 35GB di storage disponibili
+- 9 GB di memoria
+- 35 GB di storage disponibili
 
 # Installazione
 
@@ -37,7 +37,7 @@ In questa sezione andremo a coprire l'installazione della piattaforma in ambient
 
 Durante l'installazione, sarà richiesta una chiave (Pull Secret), che servirà per il download di contenuti dai registry Red Hat per l'utilizzo del nostro cluster.
 
-Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/install/crc/installer-provisioned, previo login con utenza Red Hat Developer, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
+Questa può essere reperita alla pagina https://cloud.redhat.com/openshift/create/local, previo login con utenza Red Hat Developer, dove potrete utilizzare il pulsante "Copy pull secret" per copiarlo nella clipboard ed incollarlo direttamente nella command line  
 ![](images/pull-secret.png)
 
 ## Installazione su Windows
@@ -122,42 +122,42 @@ Di seguito una piccola tabella dove troverete i comandi da eseguire a seconda de
 | :------------ | :------------ |
 | Fedora  | sudo dnf install NetworkManager  |
 | Red Hat Enterprise Linux/CentOS  |  su -c 'yum install NetworkManager' |
-| Debian/Ubuntu  | sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager  |  
+| Debian/Ubuntu  | sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager  |
 
 L'installazione è veramente semplice, in quanto l'installer si presenta come un'unica entità che andremo ad eseguire e sfrutterà le risorse di sistema per poter funzionare.
 
 Una volta eseguito il download, ci ritroveremo con un file da estrarre, che andremo a scompattare:
 
     [alex@pollos Scaricati]$ tar -xvf crc-linux-amd64.tar.xz 
-	crc-linux-1.8.0-amd64/
-	crc-linux-1.8.0-amd64/LICENSE
-	crc-linux-1.8.0-amd64/doc.pdf
-	crc-linux-1.8.0-amd64/crc
-	[alex@pollos Scaricati]$ cd crc-linux-1.8.0-amd64/
+    crc-linux-1.8.0-amd64/
+    crc-linux-1.8.0-amd64/LICENSE
+    crc-linux-1.8.0-amd64/doc.pdf
+    crc-linux-1.8.0-amd64/crc
+    [alex@pollos Scaricati]$ cd crc-linux-1.8.0-amd64/
 
 Una volta nella directory, potrete invocare il comando 'setup' dell'utility crc per installare la nostra VM:
 
     [alex@pollos crc-linux-1.8.0-amd64]$ ./crc setup
-	INFO Checking if oc binary is cached              
-	INFO Checking if CRC bundle is cached in '$HOME/.crc' 
-	INFO Unpacking bundle from the CRC binary         
-	INFO Checking if running as non-root              
-	INFO Checking if Virtualization is enabled        
-	INFO Checking if KVM is enabled                   
-	INFO Checking if libvirt is installed             
-	INFO Checking if user is part of libvirt group    
-	INFO Checking if libvirt is enabled               
-	INFO Checking if libvirt daemon is running        
-	INFO Checking if a supported libvirt version is installed 
-	INFO Checking if crc-driver-libvirt is installed  
-	INFO Checking for obsolete crc-driver-libvirt     
-	INFO Checking if libvirt 'crc' network is available 
-	INFO Checking if libvirt 'crc' network is active  
-	INFO Checking if NetworkManager is installed      
-	INFO Checking if NetworkManager service is running 
-	INFO Checking if /etc/NetworkManager/conf.d/crc-nm-dnsmasq.conf exists 
-	INFO Checking if /etc/NetworkManager/dnsmasq.d/crc.conf exists 
-	Setup is complete, you can now run 'crc start' to start the OpenShift cluster
+    INFO Checking if oc binary is cached              
+    INFO Checking if CRC bundle is cached in '$HOME/.crc' 
+    INFO Unpacking bundle from the CRC binary         
+    INFO Checking if running as non-root              
+    INFO Checking if Virtualization is enabled        
+    INFO Checking if KVM is enabled                   
+    INFO Checking if libvirt is installed             
+    INFO Checking if user is part of libvirt group    
+    INFO Checking if libvirt is enabled               
+    INFO Checking if libvirt daemon is running        
+    INFO Checking if a supported libvirt version is installed 
+    INFO Checking if crc-driver-libvirt is installed  
+    INFO Checking for obsolete crc-driver-libvirt     
+    INFO Checking if libvirt 'crc' network is available 
+    INFO Checking if libvirt 'crc' network is active  
+    INFO Checking if NetworkManager is installed      
+    INFO Checking if NetworkManager service is running 
+    INFO Checking if /etc/NetworkManager/conf.d/crc-nm-dnsmasq.conf exists 
+    INFO Checking if /etc/NetworkManager/dnsmasq.d/crc.conf exists 
+    Setup is complete, you can now run 'crc start' to start the OpenShift cluster
 
 Una volta terminata la fase di setup, è possibile avviare la predisposizione della macchina virtuale che servirà il nostro cluster Openshift!
 
