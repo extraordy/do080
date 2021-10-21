@@ -1,6 +1,6 @@
 # Deploying Containerized Applications Technical Overview (DO080)
 
-Il Deploying Containerized Applications Technical Overview (DO080) approccia il mondo dei container e dell'orchestrazione di applicazioni e servizi containerizzateìi mediante l'utilizzo di Kubernetes ed Openshift.
+Il Deploying Containerized Applications Technical Overview (DO080) approccia il mondo dei container e dell'orchestrazione di applicazioni e servizi containerizzati mediante l'utilizzo di Kubernetes ed Openshift.
 
 By EXTRAORDY - La formazione ufficiale Red Hat
 
