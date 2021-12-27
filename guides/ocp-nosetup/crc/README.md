@@ -3,8 +3,10 @@
 CRC, CodeReady Containers, è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster Openshift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installaizone vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
 Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a disposizione un ambiente funzionante, disponibile e pronto all'installazione su qualsiasi sistema operativo supportato finora.
 
-Per maggiori informazioni o per la risoluzione dei problemi più comuni, il link di riferimento è:  
-https://cloud.redhat.com/openshift/create/local
+Per maggiori informazioni o per la risoluzione dei problemi più comuni:
+
+- [homepage di CRC](https://console.redhat.com/openshift/create/local)
+- [documentazione ufficiale di CRC](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/)
 
 ## Download link:
 
@@ -12,17 +14,17 @@ https://cloud.redhat.com/openshift/create/local
 https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
 
 **MacOS - Hyperkit**  
-https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz
+https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.pkg
 
 **Windows - HyperV**  
-https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip
+https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-installer.zip
 
 ## Tabella di compatibilità
 
 |  Sistema Operativo | Versione supportata  |
 | :------------ | :------------ |
 | Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva |
-| Mac | macOS, versione 10.14 Mojave o successiva |
+| Mac | macOS, versione 10.14 Mojave o successiva<br /> :warning: l'architettura M1 non è ancora supportata |
 | Linux  | Red Hat Enterprise Linux/CentOS 7.5 o successivi </br> le ultime due release stabili di Fedora </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo |
 
 I requisiti di sistema, invece, sono i seguenti:
