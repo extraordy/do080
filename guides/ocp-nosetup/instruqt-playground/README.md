@@ -1,4 +1,4 @@
-## Openshift Playground - Instruqt
+# Openshift Playground - Instruqt
 
 Un ottimo modo per iniziare, senza necessità di registrarsi, si va a sfruttare un ambiente sandbox con un mini-cluster OpenShift configurato automaticamente, dove sarà possibile da subito eseguire i primi comandi e muovere i primi passi sulla **command line di Openshift**.
 
