@@ -12,6 +12,6 @@ In entrambi i casi, tuttavia, le richieste a livello hardware sono molto esose, 
 
 Di seguito troverete delle piccole linee guida per utilizzare i tre metodi che abbiamo scelto di proporvi:
 
-- [Openshift Playground - Instruqt (Playground in web browser, senza registrazione)](instruqt-playground/README.md)
-- [Openshift Online (Cluster Openshift minimale su infrastruttura Red Hat, con registrazione)](openshift-online/README.md)
+- [OpenShift Playground - Instruqt (Playground in web browser, senza registrazione)](instruqt-playground/README.md)
+- [OpenShift Online (Cluster Openshift minimale su infrastruttura Red Hat, con registrazione)](openshift-online/README.md)
 - [OpenShift Local (VM all-in-one con un cluster OpenShift minimale)](crc/README.md)
