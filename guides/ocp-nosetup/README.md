@@ -1,5 +1,5 @@
 # Come utilizzare un cluster Openshift senza installazione
-L'installazione di **Openshift 4.x** è stata di gran lunga semplificata rispetto alle versioni precedenti.  
+L'installazione di **OpenShift 4.x** è stata di gran lunga semplificata rispetto alle versioni precedenti.  
 L'utilizzo dei playbook e la configurazione di tutte le variabili della piattaforma sono stati sostituiti da un installer snello, che pevede due modalità di installazione, a seconda se l'infrastruttura venga o meno preparata dall'utente.  
 Esistono infatti due metodologie:
 
@@ -14,4 +14,4 @@ Di seguito troverete delle piccole linee guida per utilizzare i tre metodi che a
 
 - [Openshift Playground - Instruqt (Playground in web browser, senza registrazione)](instruqt-playground/README.md)
 - [Openshift Online (Cluster Openshift minimale su infrastruttura Red Hat, con registrazione)](openshift-online/README.md)
-- [CodeReady Containers - CRC (VM all-in-one con un cluster Openshift minimale)](crc/README.md)
+- [OpenShift Local (VM all-in-one con un cluster OpenShift minimale)](crc/README.md)
