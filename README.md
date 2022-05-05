@@ -12,9 +12,9 @@ Per poter provare i comandi del corso, ti suggeriamo di installare podman su Lin
 
 - [Guida all'installazione di Podman](guides/podman/README.md)
 
-Ti consigliamo inoltre l'installazione di CodeReady Containers per avere a disposizione un cluster Openshift minimale, di seguito il link con requisiti minimi di sistema e la procedura.
+Ti consigliamo inoltre l'installazione di OpenShift Local (precedentemente conosciuto come CodeReady Containers) per avere a disposizione un cluster OpenShift minimale, di seguito il link con requisiti minimi di sistema e la procedura.
 
-- [Guida all'installazione di CodeReady Containers](guides/ocp-nosetup/crc/README.md)
+- [Guida all'installazione di OpenShift Local](guides/ocp-nosetup/crc/README.md)
 - [Guida inscrizione gratuita a Red Hat Developer](guides/rhdev-subscribe/README.md)
 
 Nel caso non fosse possibile installare il software necessario per qualunque motivo, non preoccuparti.
@@ -22,7 +22,7 @@ Puoi seguire comunque le lezioni dei nostri istruttori.
 
 Avere un ambiente Openshift disponibile e podman installato **non sono indispensabili** per seguire il corso.
 
-Di seguito alcune utili guide sull'utilizzo di un cluster Openshift senza necessità di installazione, unitamente alla guida per il download della CLI Openshift, `oc`.
+Di seguito alcune utili guide sull'utilizzo di un cluster OpenShift senza necessità di installazione, unitamente alla guida per il download della CLI Openshift, `oc`.
 
 - [Guida all'utilizzo di Openshift senza necessità di installazione](guides/ocp-nosetup/README.md)
 - [Guida installazione Openshift Client - oc](guides/oc/README.md)
