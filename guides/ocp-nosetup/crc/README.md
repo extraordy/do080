@@ -1,12 +1,12 @@
-# CodeReady Containers - Un cluster all in one!
+# OpenShift Local - Un cluster all in one!
 
-CRC, CodeReady Containers, è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster Openshift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installaizone vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
+OpenShift Local (precedentemente conosciuto come CodeReady Containers), è un progetto che ci permette di andare ad installare una macchina virtuale compatta che comprende una installazione minimale di un cluster OpenShift all-in-one, con caratteristiche identiche all'installazione reale, ma con il vantaggio di richiedere una quantità di risorse decisamente inferiore, oltre a risparmiarci l'effort di dover eseguire una installaizone vera e propria, con conseguenti configurazioni a livello di rete, storage e quant'altro.
 Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a disposizione un ambiente funzionante, disponibile e pronto all'installazione su qualsiasi sistema operativo supportato finora.
 
 Per maggiori informazioni o per la risoluzione dei problemi più comuni:
 
-- [homepage di CRC](https://console.redhat.com/openshift/create/local)
-- [documentazione ufficiale di CRC](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/)
+- [homepage di OpenShift Local](https://console.redhat.com/openshift/create/local)
+- [documentazione ufficiale di OpenShift Local](https://access.redhat.com/documentation/en-us/red_hat_openshift_local/)
 
 ## Download link:
 
@@ -32,6 +32,10 @@ I requisiti di sistema, invece, sono i seguenti:
 - 4 virtual CPU (vCPU)
 - 9 GB di memoria
 - 35 GB di storage disponibili
+
+>### :warning: NOTA BENE
+>
+>L'installer andrà automaticamente a creare una virtual machine. Non è necessario quindi creare alcuna vm in precedenza. Il setup nested (con virtual machine annidate) non è supportato.
 
 # Installazione
 
@@ -116,7 +120,7 @@ Al termine dell'installazione viene generata una password per l'utente developer
 
 ## Installazione su Linux
 
-Affinchè sia possibile installare CodeReadyContainers (CRC) su una macchina Linux, è necessario che siano verificate ed installate le sue uniche dipendenze, **libvirt** e **NetworkManager**.
+Affinchè sia possibile installare OpenShift Local su una macchina Linux, è necessario che siano verificate ed installate le sue uniche dipendenze, **libvirt** e **NetworkManager**.
 
 Di seguito una piccola tabella dove troverete i comandi da eseguire a seconda della distribuzione in uso.
 
