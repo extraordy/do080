@@ -4,7 +4,7 @@ Un ottimo modo per iniziare, senza necessità di registrarsi, si va a sfruttare 
 
 Il playground è basato su Instruqt, e permette di utilizzare ambienti di diverso tipo direttamente all'interno del nostro browser.
 
-Per accedervi, è sufficiente collegarsi al link https://developers.redhat.com/courses/explore-openshift/openshift-playground per utilizzare una demo basata sulla più recente versione di OpenShift versione.
+Per accedervi, è sufficiente collegarsi al link https://developers.redhat.com/courses/explore-openshift/openshift-playground per utilizzare una demo basata sulla più recente versione di OpenShift.
 
 Una volta aperto il link, clicchiamo sul bottone verde "Launch" in basso a destra e dopo alcuni minuti vedremo comparire in basso a destra il bottone verde "Start":
 ![](images/instruqt-start.png)
