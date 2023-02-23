@@ -14,18 +14,18 @@ Per maggiori informazioni o per la risoluzione dei problemi più comuni:
 https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
 
 **MacOS - Hyperkit**  
-https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.pkg
+https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-installer.pkg
 
 **Windows - HyperV**  
 https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-installer.zip
 
 ## Tabella di compatibilità
 
-|  Sistema Operativo | Versione supportata  |
-| :------------ | :------------ |
-| Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva |
-| Mac | macOS, versione 10.14 Mojave o successiva<br /> :warning: l'architettura M1 non è ancora supportata |
-| Linux  | Red Hat Enterprise Linux/CentOS 7.5 o successivi </br> le ultime due release stabili di Fedora </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo |
+|  Sistema Operativo | Versione supportata  | Architettura |
+| :------------ | :------------ | ------------- |
+| Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva | x86_64 |
+| Mac | macOS, versione 11 Big Sur o successiva<br /> :warning: l'architettura x86 non è più supportata | Apple Silicon |
+| Linux  | Red Hat Enterprise Linux/CentOS 8 o 9 </br> le ultime due release stabili di Fedora </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo | x86_64 |
 
 I requisiti di sistema, invece, sono i seguenti:
 
