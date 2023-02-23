@@ -25,7 +25,7 @@ https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-ins
 | :------------ | :------------ | ------------- |
 | Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva | x86_64 |
 | Mac | macOS, versione 11 Big Sur o successiva<br /> :warning: l'architettura x86 non è più supportata | Apple Silicon |
-| Linux  | Red Hat Enterprise Linux/CentOS 8 o 9 </br> le ultime due release stabili di Fedora </br> Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo | x86_64 |
+| Linux  | Red Hat Enterprise Linux/CentOS 8 o 9 <br />le ultime due release stabili di Fedora <br />Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo | x86_64 |
 
 I requisiti di sistema, invece, sono i seguenti:
 
