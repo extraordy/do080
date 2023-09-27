@@ -1,3 +1,3 @@
 # Openshift Playground - Katacoda
 
-Il playground su Katacoda è stato dismesso. È possibile esercitarsi con il [nuovo playground su Instruqt](../instruqt-playground/README.md).
+Purtroppo questa opzione non è più disponibile. Vi consigliamo quindi di esplorare i metodi di [utilzzo di OpenShift senza installazione e senza costo](../README.md), attualmente supportati.
