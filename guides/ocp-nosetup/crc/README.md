@@ -5,7 +5,7 @@ Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a
 
 Per maggiori informazioni o per la risoluzione dei problemi più comuni:
 
-- [homepage di OpenShift Local](https://console.redhat.com/openshift/create/local)
+- [homepage di OpenShift Local](https://developers.redhat.com/products/openshift-local/overview)
 - [documentazione ufficiale di OpenShift Local](https://access.redhat.com/documentation/en-us/red_hat_openshift_local/)
 
 ## Download link:
@@ -126,15 +126,14 @@ Di seguito una piccola tabella dove troverete i comandi da eseguire a seconda de
 
 | Distribuzione Linux  |  Installazione dei requisiti |
 | :------------ | :------------ |
-| Fedora  | sudo dnf install NetworkManager  |
-| Red Hat Enterprise Linux/CentOS  |  su -c 'yum install NetworkManager' |
-| Debian/Ubuntu  | sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager  |
+| Fedora/Red Hat Enterprise Linux/CentOS | `sudo dnf install NetworkManager` |
+| Debian/Ubuntu  | `sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager` |
 
 L'installazione è veramente semplice, in quanto l'installer si presenta come un'unica entità che andremo ad eseguire e sfrutterà le risorse di sistema per poter funzionare.
 
 Una volta eseguito il download, ci ritroveremo con un file da estrarre, che andremo a scompattare:
 
-    [alex@pollos Scaricati]$ tar -xvf crc-linux-amd64.tar.xz 
+    [alex@pollos Scaricati]$ tar xvf crc-linux-amd64.tar.xz
     crc-linux-1.8.0-amd64/
     crc-linux-1.8.0-amd64/LICENSE
     crc-linux-1.8.0-amd64/doc.pdf
