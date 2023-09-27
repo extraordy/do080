@@ -12,12 +12,12 @@ La Developer Sandbox è perfetta per iniziare a sviluppare su OpenShift. In ques
 
    Figura 2: Il punto di ingresso per l'accesso a Developer Sandbox per Red Hat OpenShift.
    
-
 2. Seleziona **Start your sandbox for free.** Ti verrà richiesto di accedere al tuo account Red Hat Developer..
 
 3. Fornisci il nome utente e la password per il tuo account Red Hat Developer nella pagina Web di accesso (Figura 3, Callout 1).
 
 4. Se non disponi di un account Red Hat, fai clic sull'icona **Register** in alto a destra nella pagina Web (Figura 3, Callout 2). Da lì puoi registrarti con Red Hat per creare un account.
+   
    [![Log into your Red Hat account to access the Developer Sandbox for Red Hat OpenShift.](https://developers.redhat.com/sites/default/files/styles/article_floated/public/foundations_1.10_fig3.png?itok=4nvTPT8g)](https://developers.redhat.com/sites/default/files/foundations_1.10_fig3.png)
    Figura 3: accedi al tuo account Red Hat per accedere a Developer Sandbox per Red Hat OpenShift.
 
