@@ -6,7 +6,7 @@ Un setup di questo tipo è ottimo per iniziare a muovere i primi passi, avendo a
 Per maggiori informazioni o per la risoluzione dei problemi più comuni:
 
 - [homepage di OpenShift Local](https://developers.redhat.com/products/openshift-local/overview)
-- [documentazione ufficiale di OpenShift Local](https://access.redhat.com/documentation/en-us/red_hat_openshift_local/)
+- [documentazione ufficiale di OpenShift Local](https://crc.dev/docs/introducing/)
 
 ## Download link:
 
@@ -23,14 +23,14 @@ https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-ins
 
 |  Sistema Operativo | Versione supportata  | Architettura |
 | :------------ | :------------ | ------------- |
-| Windows  | Windows 10 Professional Fall Creators Update, versione 1709 o successiva | x86_64 |
-| Mac | macOS, versione 11 Big Sur o successiva<br /> :warning: l'architettura x86 non è più supportata | Apple Silicon |
+| Windows  | Windows, versione 10 o 11, con tutti gli aggiornamenti più recenti | x86_64 |
+| Mac | macOS, versione 13 Ventura o successiva<br /> :warning: l'architettura x86 non è più supportata | Apple Silicon |
 | Linux  | Red Hat Enterprise Linux/CentOS 8 o 9 <br />le ultime due release stabili di Fedora <br />Ubuntu 18.04 LTS, Debian 10 o successivi non sono ufficialmente supportati, e potrebbero richiedere l'installazione di software aggiuntivo | x86_64 |
 
 I requisiti di sistema, invece, sono i seguenti:
 
 - 4 virtual CPU (vCPU)
-- 9 GB di memoria
+- 10,5 GB di memoria
 - 35 GB di storage disponibili
 
 >### :warning: NOTA BENE
